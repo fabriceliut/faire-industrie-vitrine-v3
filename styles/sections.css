@@ -293,6 +293,10 @@
   background: var(--color-surface);
 }
 
+.packs .grid--3 {
+  padding-top: var(--space-2);
+}
+
 .packs .card--pack .card__body {
   padding: var(--space-3);
   padding-bottom: 0;

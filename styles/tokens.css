@@ -82,8 +82,9 @@
   --tracking-widest: 0.1em;
 
   /* --- Font families --- */
-  --font-display: 'DM Serif Display', serif;
+  --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
 
   /* --- Spacing (base 8px) --- */
   --space-1: 8px;

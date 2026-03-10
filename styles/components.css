@@ -33,18 +33,18 @@
 }
 
 .navbar__logo img {
-  height: 120px;
+  height: 64px;
   width: auto;
   transition: height var(--duration-base) var(--ease-out);
 }
 
 .navbar.is-scrolled .navbar__logo img {
-  height: 56px;
+  height: 44px;
 }
 
 @media (min-width: 768px) {
-  .navbar__logo img { height: 160px; }
-  .navbar.is-scrolled .navbar__logo img { height: 64px; }
+  .navbar__logo img { height: 80px; }
+  .navbar.is-scrolled .navbar__logo img { height: 52px; }
 }
 
 .navbar__links {

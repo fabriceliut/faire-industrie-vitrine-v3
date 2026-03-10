@@ -33,13 +33,13 @@
 }
 
 .navbar__logo img {
-  height: 140px;
+  height: 280px;
   width: auto;
   transition: height var(--duration-base) var(--ease-out);
 }
 
 .navbar.is-scrolled .navbar__logo img {
-  height: 80px;
+  height: 160px;
 }
 
 .navbar__links {

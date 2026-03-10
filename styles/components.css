@@ -33,7 +33,7 @@
 }
 
 .navbar__logo img {
-  height: 48px;
+  height: 96px;
   width: auto;
   transition: height var(--duration-base) var(--ease-out);
 }
@@ -43,7 +43,7 @@
 }
 
 @media (min-width: 768px) {
-  .navbar__logo img { height: 56px; }
+  .navbar__logo img { height: 112px; }
   .navbar.is-scrolled .navbar__logo img { height: 40px; }
 }
 

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Méta-données -->
+    <title>Faire l'Industrie - Le Vrai Visage de l'Industrie</title>
+    <meta name="description" content="Faites découvrir le vrai visage de l'industrie en 15 minutes grâce à un jeu pédagogique prêt à animer. Pour entreprises, enseignants et partenaires.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://faire-industrie.fr">
+    
+    <!-- Open Graph / Réseaux Sociaux -->
+    <meta property="og:title" content="Faire l'Industrie - Le jeu pour briser les clichés">
+    <meta property="og:description" content="Transformez une présentation ou une visite en expérience mémorable. Découvrez les métiers, les missions et l'impact de l'industrie locale.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="fi-logo.webp">
+    <meta property="og:image:alt" content="Logo Faire l'Industrie">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Faire l'Industrie">
+    <meta name="twitter:description" content="Le jeu pour faire découvrir le vrai visage de l'industrie.">
+    <meta name="twitter:image" content="fi-logo.webp">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="fi-logo.webp">
+
+    <!-- Optimisation Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- Préchargement LCP -->
+    <link rel="preload" as="image" href="fi-logo.webp">
+    <link rel="preload" as="image" href="image_de9aba.jpg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & Babel (Version Production) -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Polices -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Avenir', 'Nunito Sans', sans-serif; 
+            background-color: #F7FDF9; 
+            color: #1F2937;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(2deg); }
+            50% { transform: translateY(-10px) rotate(2.5deg); }
+            100% { transform: translateY(0px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+            will-change: transform; 
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // --- LIENS CONSTANTES ---
+        const LINKS = {
+            NOTION: "https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f?pvs=105",
+            CALCOM: "https://cal.com/fabrice-liut/15-min-meeting"
+        };
+
+        // --- CONSTANTES & COULEURS ---
+        const COLORS = {
+            orange: '#F59E33',
+            green: '#009F67',
+            lime: '#C7CD2F',
+            skyBlue: '#74D2D9',
+            teal: '#00A895',
+            bgLight: '#F7FDF9',
+            white: '#FFFFFF',
+            darkText: '#1F2937',
+            footerBg: '#0F392B'
+        };
+
+        // --- DONNÉES CATALOGUE (PÉPITES) ---
+        const JOBS_DATA = [
+          { id: '1', type: 'attractif', title: "Chaudronnier", company: "Groupe Phea", status: 'Validé', softSkills: ["Esprit d’équipe", "Rigueur", "Sens sécurité"], mission: "Lecture de plans, façonnage et assemblage de pièces métalliques complexes.", environment: "Atelier spacieux, travail en équipe, autonomie sur les pièces.", impact: "Tu donnes forme au métal pour des équipements clés, durables et sûrs." },
+          { id: '2', type: 'attractif', title: "Fondeur", company: "Corexco-marine", status: 'Validé', softSkills: ["Esprit d’équipe", "Rigueur", "Sens sécurité"], mission: "Réaliser des pièces métalliques par fusion et moulage.", environment: "Travail physique mais technique, rythme d'équipe soutenu.", impact: "Tu transformes le métal brut en pièces essentielles pour la marine." },
+          { id: '3', type: 'moderne', title: "Ingénieur Prot. Cathodique", company: "Corexco-marine", status: 'Validé', softSkills: ["Analyse", "Autonomie", "Relation client"], mission: "Études et suivi de systèmes anti-corrosion pour structures.", environment: "Mix terrain/bureau, déplacements, haute technicité.", impact: "Tu protèges les infrastructures contre la corrosion et la pollution." },
+          { id: '4', type: 'moderne', title: "Ingénieur R&D", company: "Mecamagnetic", status: 'Validé', softSkills: ["Analyse", "Créativité", "Esprit d’équipe"], mission: "Qualification techno, prototypage, pilotage de l’industrialisation.", environment: "Bureau d'études collaboratif, outils de simulation, lien direct atelier.", impact: "Tu fais passer une idée abstraite à un produit industriel réel." },
+          { id: '5', type: 'moderne', title: "Laseriste", company: "Groupe Phea", status: 'Validé', softSkills: ["Analyse", "Précision", "Rigueur"], mission: "Programmation et pilotage de machines de découpe laser.", environment: "Atelier propre, machines numériques récentes, écran de contrôle.", impact: "Tu découpes avec précision pour zéro défaut et moins de déchets." },
+          { id: '6', type: 'attractif', title: "Monteur-soudeur", company: "JM-Concept", status: 'Validé', softSkills: ["Esprit d’équipe", "Rigueur", "Sens sécurité"], mission: "Assemblage d’ensembles mécano‑soudés et finitions.", environment: "Poste ergonomique, travail minutieux, fierté de l'ouvrage fini.", impact: "Tu assembles des pièces qui doivent tenir des décennies." },
+          { id: '7', type: 'moderne', title: "Monteur Tiny House", company: "Hekipia", status: 'Validé', softSkills: ["Autonomie", "Polyvalence", "Polyvalence"], mission: "Construction structure bois, isolation et aménagements intérieurs.", environment: "Construction bois, matériaux écologiques, ambiance 'start-up' indus.", impact: "Tu construis des habitats durables qui changent les modes de vie." },
+          { id: '8', type: 'moderne', title: "Opérateur sur CN", company: "Eriks", status: 'Validé', softSkills: ["Logique", "Rigueur", "Contrôle"], mission: "Pilotage de centres d'usinage numériques et contrôle qualité.", environment: "Environnement climatisé, pilotage sur écran, maintenance 1er niveau.", impact: "Tu produis des pièces mécaniques d'une précision chirurgicale." },
+          { id: '9', type: 'attractif', title: "Plieur", company: "Steelé", status: 'Validé', softSkills: ["Vision 3D", "Rigueur", "Autonomie"], mission: "Formage de tôles sur presses plieuses numériques.", environment: "Atelier organisé, interaction constante avec les plans 3D.", impact: "Tu donnes le volume et la forme aux objets de notre quotidien." },
+          { id: '10', type: 'attractif', title: "Poseur d'armature", company: "Pro Armature", status: 'Validé', softSkills: ["Endurance", "Esprit d’équipe", "Sécurité"], mission: "Assemblage des squelettes métalliques pour le béton armé.", environment: "Travail en extérieur ou atelier, fort esprit de cohésion.", impact: "Tu es la colonne vertébrale cachée des grands ouvrages." },
+          { id: '11', type: 'attractif', title: "Repousseur", company: "Steelé", status: 'Validé', softSkills: ["Dextérité", "Patience", "Artisanat"], mission: "Déformation du métal sur tour pour créer des formes rondes.", environment: "Métier rare, mix artisanat d'art et industrie.", impact: "Tu perpétues un savoir-faire unique pour des pièces sur-mesure." },
+          { id: '12', type: 'moderne', title: "Responsable Qualité", company: "Mecamagnetic", status: 'Validé', softSkills: ["Diplomatie", "Communication", "Rigueur"], mission: "Pilotage de l'amélioration continue et des certifications.", environment: "Transverse, relation avec tous les services, bureau et terrain.", impact: "Tu garantis la satisfaction du client et la fiablité de l'usine." },
+          { id: '13', type: 'moderne', title: "Ingénieur Traitement Eau", company: "INOVAYA", status: 'Potentiel', softSkills: ["Innovation", "Écologie", "Technique"], mission: "Conception de systèmes de potabilisation décentralisés.", environment: "Start-up à impact, haute technologie, enjeux humanitaires.", impact: "Tu apportes l'eau potable là où elle manque." },
+          { id: '14', type: 'moderne', title: "Ingénieur Industrie 4.0", company: "INGELI SARL", status: 'Potentiel', softSkills: ["Curiosité", "Digital", "Pédagogie"], mission: "Digitalisation des ateliers, IoT et analyse de données.", environment: "Au cœur de la transformation numérique, écrans, capteurs.", impact: "Tu connectes l’atelier pour le rendre plus intelligent et économe." },
+          { id: '15', type: 'moderne', title: "Technicien Robotique", company: "MEANWHILE", status: 'Potentiel', softSkills: ["Logique", "Curiosité", "Rigueur"], mission: "Installation et maintenance de robots mobiles autonomes.", environment: "Haute technologie, robotique mobile, environnement propre.", impact: "Tu fais cohabiter robots et humains pour réduire la pénibilité." }
+        ];
+
+        // --- COMPOSANTS UI ---
+        
+        const Icon = ({ name, size = 20, className = '', color = 'currentColor' }) => {
+            const icons = {
+                Check: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="20 6 9 17 4 12"/></svg>,
+                ArrowRight: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>,
+                Download: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>,
+                Calendar: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>,
+                Factory: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10H2v6z"/><path d="M7 16v-4"/><path d="M11 16v-4"/><path d="M15 16v-4"/></svg>,
+                Users: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+                Target: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
+                Star: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
+                GraduationCap: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>,
+                Smile: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>,
+                Clock: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
+                ChevronDown: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="6 9 12 15 18 9"/></svg>,
+                Plus: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>,
+                CheckCircle: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>,
+                Zap: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+                Sun: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>,
+                MessageCircle: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>,
+                Search: <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
+            };
+            return icons[name] || null;
+        };
+
+        const ImageWithFallback = ({ src, alt, className, width, height, loading = "lazy", fetchPriority="auto" }) => {
+            const [error, setError] = useState(false);
+            if (error) return <div className={`${className} bg-slate-200 flex items-center justify-center text-slate-400 text-xs`}>[Image: {alt}]</div>;
+            return <img src={src} alt={alt} className={className} width={width} height={height} loading={loading} fetchPriority={fetchPriority} onError={() => setError(true)} />;
+        };
+
+        const Blob = ({ className, color }) => (
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className={`absolute opacity-10 pointer-events-none ${className}`}>
+            <path fill={color} d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.3C93.5,8.6,82.2,21.5,71.6,32.6C61,43.7,51.1,53.1,40,62.2C28.9,71.3,16.6,80.1,3.2,74.6C-10.2,69.1,-24.7,49.3,-38.3,38.8C-51.9,28.3,-64.6,27.1,-72.3,13.9C-80,-1.7,-82.7,-29.3,-72.9,-49.4C-63.1,-69.5,-40.8,-82.1,-24.6,-80.4C-8.4,-78.7,1.7,-62.7,14.7,-54.5L44.7,-76.4Z" transform="translate(100 100)" />
+          </svg>
+        );
+
+        // --- COMPOSANTS DE SECTION ---
+
+        const Hero = () => (
+            <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+                <Blob className="top-0 right-0 w-[600px] h-[600px] -translate-y-1/4 translate-x-1/4" color={COLORS.skyBlue} />
+                <Blob className="bottom-0 left-0 w-[500px] h-[500px] translate-y-1/4 -translate-x-1/4" color={COLORS.lime} />
+                
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="text-center lg:text-left">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6">
+                                Faites découvrir le <span style={{ color: COLORS.orange }}>Vrai Visage</span> de l'Industrie en 15 minutes
+                            </h1>
+                            <p className="text-lg md:text-xl text-slate-600 mb-8 font-medium">
+                                Pour les entreprises (PMI), prescripteurs et partenaires du territoire AURA qui veulent créer un déclic durable, sans logistique lourde.
+                            </p>
+                            
+                            <ul className="space-y-3 mb-10 text-left inline-block">
+                                {[
+                                    "Casse les clichés : une industrie moderne, utile, locale.",
+                                    "Rend les métiers concrets : missions, environnements, impacts, profils.",
+                                    "Déclenche des prochaines étapes : visite, stage, rencontre, formation."
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3">
+                                        <div className="mt-1 flex-shrink-0 text-white rounded-full p-0.5" style={{ backgroundColor: COLORS.green }}>
+                                            <Icon name="Check" size={12} />
+                                        </div>
+                                        <span className="text-slate-700">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <div className="flex flex-col items-center sm:items-start">
+                                    <a href={LINKS.NOTION} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full font-bold text-white shadow-xl hover:shadow-2xl transition-transform hover:-translate-y-1 w-full sm:w-auto flex items-center justify-center gap-2" style={{ backgroundColor: COLORS.orange }}>
+                                        <Icon name="Download" size={20} /> Recevoir le kit (PDF)
+                                    </a>
+                                    <span className="text-xs text-slate-500 mt-2">2 minutes. Email + profil.</span>
+                                </div>
+                                <div className="flex flex-col items-center sm:items-start">
+                                    <a href={LINKS.CALCOM} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full font-bold bg-white border-2 hover:bg-slate-50 transition-colors w-full sm:w-auto flex items-center justify-center gap-2" style={{ borderColor: COLORS.green, color: COLORS.green }}>
+                                        <Icon name="Calendar" size={20} /> Réserver une démo
+                                    </a>
+                                    <span className="text-xs text-slate-500 mt-2">15 min pour vous conseiller.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Visuel Hero */}
+                        <div className="relative h-auto flex items-center justify-center perspective-1000 mt-10 lg:mt-0">
+                            <div className="relative w-full max-w-lg animate-float">
+                                <div className="absolute inset-0 rounded-[3rem] rounded-tr-[8rem] rounded-bl-[8rem] rotate-3 opacity-20 scale-105 translate-y-4 translate-x-4" style={{ backgroundColor: COLORS.green }}></div>
+                                <ImageWithFallback 
+                                    src="image_de9aba.jpg" 
+                                    alt="Atelier jeu Faire l'Industrie" 
+                                    className="relative w-full h-auto rounded-[3rem] rounded-tr-[8rem] rounded-bl-[8rem] shadow-2xl border-8 border-white object-cover transform rotate-[-2deg]"
+                                    width="500" height="500" fetchPriority="high" loading="eager"
+                                    placeholderSrc="https://placehold.co/500x500/eee/999?text=Atelier+Jeu"
+                                />
+                                <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-full shadow-xl border-4 flex flex-col items-center justify-center w-36 h-36 z-20 animate-bounce" style={{ borderColor: COLORS.orange }}>
+                                    <span className="font-extrabold text-2xl" style={{ color: COLORS.green }}>15 min</span>
+                                    <span className="text-slate-500 text-xs font-bold uppercase text-center leading-tight">En groupe</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const ProblemSolution = () => (
+            <section className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-extrabold mb-6" style={{ color: COLORS.darkText }}>
+                            Trop souvent, l’industrie est mal racontée.<br/>
+                            <span style={{ color: COLORS.orange }}>Et ça coûte des vocations.</span>
+                        </h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-8 mb-16">
+                        {[
+                            { title: "Image datée", text: "Les jeunes ont une image 'Zola' de l'industrie : sale, pénible, polluante.", icon: "Factory", color: COLORS.orange },
+                            { title: "Actions oubliées", text: "Les visites ou salons ponctuels sont souvent passifs et peu mémorables.", icon: "Clock", color: COLORS.green },
+                            { title: "Métiers invisibles", text: "Les entreprises peinent à rendre leurs métiers désirables et compréhensibles.", icon: "Users", color: COLORS.skyBlue }
+                        ].map((item, i) => (
+                            <div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-lg transition-shadow">
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-white shadow-md" style={{ backgroundColor: item.color }}>
+                                    <Icon name={item.icon} size={24} />
+                                </div>
+                                <h3 className="font-bold text-xl mb-3 text-slate-800">{item.title}</h3>
+                                <p className="text-slate-600 leading-relaxed">{item.text}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="bg-[#0F392B] rounded-[3rem] p-8 md:p-12 text-white relative overflow-hidden text-center max-w-4xl mx-auto shadow-2xl">
+                        <div className="relative z-10">
+                            <h3 className="text-2xl font-bold mb-4" style={{ color: COLORS.lime }}>La Solution</h3>
+                            <p className="text-lg md:text-xl font-medium leading-relaxed">
+                                "Faire l’Industrie" transforme une présentation ou une visite en <span className="font-bold text-white underline decoration-wavy" style={{ textDecorationColor: COLORS.orange }}>expérience de jeu</span> : simple à déployer, mémorable, et tournée vers la suite.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const GameComposition = () => (
+            <section className="py-20 overflow-hidden relative">
+                <div className="absolute inset-0 opacity-30" style={{ background: `linear-gradient(to bottom right, ${COLORS.bgLight}, white)` }}></div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-slate-900">
+                            Un jeu de cartes pour manipuler le réel
+                        </h2>
+                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                            Finies les fiches métiers abstraites. Le jeu permet de manipuler des concepts concrets.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 mb-16">
+                        {[
+                            { label: "Carte Métier", text: "Ce qu'on fait vraiment au quotidien.", color: COLORS.orange, icon: "Factory" },
+                            { label: "Carte Mission", text: "Une situation réelle à résoudre en équipe.", color: COLORS.skyBlue, icon: "Target" },
+                            { label: "Carte Impact", text: "Entreprise & utilité (Recto/Verso).", color: COLORS.green, icon: "Star" },
+                            { label: "Carte Profil", text: "Verbatims, motivations, ce qui plaît.", color: COLORS.lime, icon: "Users" },
+                            { label: "Carte Formation", text: "Chemins d'accès, étapes, prérequis.", color: COLORS.teal, icon: "GraduationCap" }
+                        ].map((card, i) => (
+                            <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center hover:-translate-y-1 transition-transform h-full">
+                                <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 text-white shadow-sm" style={{ backgroundColor: card.color }}>
+                                    <Icon name={card.icon} size={20} />
+                                </div>
+                                <h4 className="font-bold text-slate-800 mb-2">{card.label}</h4>
+                                <p className="text-sm text-slate-500 leading-snug">{card.text}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div className="bg-white p-6 rounded-2xl shadow-md border-l-4" style={{ borderColor: COLORS.skyBlue }}>
+                            <h4 className="font-bold text-lg mb-2" style={{ color: COLORS.skyBlue }}>Exemple de Mission</h4>
+                            <p className="italic text-slate-600 mb-2">“Sauver la production avant la fin de journée”</p>
+                            <p className="text-sm text-slate-500"><strong>Objectif :</strong> Comprendre maintenance + coordination.<br/><strong>Résultat :</strong> Un plan d'action simple, en rôles.</p>
+                        </div>
+                        <div className="bg-white p-6 rounded-2xl shadow-md border-l-4" style={{ borderColor: COLORS.orange }}>
+                            <h4 className="font-bold text-lg mb-2" style={{ color: COLORS.orange }}>Cliché vs Réalité</h4>
+                            <p className="italic text-slate-600 mb-2">“L’industrie, c’est sale et répétitif”</p>
+                            <p className="text-sm text-slate-500"><strong>Réalité :</strong> Automatisation, qualité, sécurité.<br/><strong>Question :</strong> “Qu’est-ce qui change votre perception ?”</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const CycleSteps = () => (
+            <section className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-slate-900">Une progression claire</h2>
+                        <p className="text-lg text-slate-600">Du déclic aux prochaines étapes.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-4 gap-6 relative">
+                        <div className="hidden md:block absolute top-8 left-0 w-full h-1 bg-slate-100 rounded-full -z-10"></div>
+                        {[
+                            { step: "1", title: "Découvrir", text: "Briser les préjugés (icebreakers, clichés).", color: COLORS.orange },
+                            { step: "2", title: "Explorer", text: "Rencontrer les métiers (cartes + missions).", color: COLORS.green },
+                            { step: "3", title: "Se projeter", text: "Trouver sa place (profils, motivations).", color: COLORS.skyBlue },
+                            { step: "4", title: "Agir", text: "Passer à la suite (visite, stage, formation).", color: COLORS.teal }
+                        ].map((s, i) => (
+                            <div key={i} className="text-center bg-white">
+                                <div className="w-16 h-16 mx-auto rounded-2xl rotate-45 flex items-center justify-center mb-6 shadow-lg border-4 border-white text-xl font-black text-white" style={{ backgroundColor: s.color }}>
+                                    <span className="-rotate-45">{s.step}</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-2 text-slate-800">{s.title}</h3>
+                                <p className="text-sm text-slate-500 px-4">{s.text}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        );
+
+        const Formats = () => (
+            <section className="py-20 bg-[#F0F9F6]">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-extrabold mb-4 text-slate-900">Adaptable à vos contraintes</h2>
+                        <p className="text-slate-600">Un jeu collectif court : 15–20 min en moyenne (extensible).</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6 mb-10">
+                        {[
+                            { time: "15-20 min", title: "Session Standard", desc: "Règles (3'), jeu (8'), debrief (5'). Efficace." },
+                            { time: "30-45 min", title: "Version Étendue", desc: "Plus de cartes, debrief approfondi ou intégration parcours." },
+                            { time: "½ journée", title: "Immersion", desc: "Atelier + rencontre entreprise / visite scénarisée." }
+                        ].map((f, i) => (
+                            <div key={i} className="bg-white p-6 rounded-2xl shadow-sm text-center border border-slate-100">
+                                <div className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 bg-slate-100 text-slate-600">{f.time}</div>
+                                <h3 className="text-xl font-bold mb-2 text-slate-800">{f.title}</h3>
+                                <p className="text-sm text-slate-500">{f.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="text-center">
+                        <a href={LINKS.CALCOM} target="_blank" rel="noopener noreferrer" className="text-sm font-bold underline hover:text-green-600 transition-colors cursor-pointer text-slate-500">
+                            Je ne sais pas quel format choisir → Réserver une démo 15 min
+                        </a>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const Packs = () => (
+            <section className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 className="text-3xl md:text-4xl font-extrabold mb-12 text-center text-slate-900">Trois packs pour couvrir les usages</h2>
+                    
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {/* Pack 1 */}
+                        <div className="border border-slate-200 rounded-3xl p-8 hover:shadow-xl transition-shadow bg-white flex flex-col">
+                            <div className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-400">Pack 1 (Principal)</div>
+                            <h3 className="text-2xl font-bold mb-4 text-slate-800">Partenaire / Prescripteur</h3>
+                            <div className="text-sm text-slate-600 mb-6 flex-grow">
+                                <p className="mb-4"><strong>Pour :</strong> Partenaires qui déploient le jeu (réseaux, orientation, emploi).</p>
+                                <p className="mb-2"><strong>Valeur :</strong> Un outil interactif pour faire découvrir les métiers de l’industrie du territoire AURA.</p>
+                                <ul className="list-disc pl-5 space-y-1 mb-4">
+                                    <li>Entreprises réelles et locales</li>
+                                    <li>Métiers actuels (Robotique, Tiny House...)</li>
+                                    <li>Contextes attractifs</li>
+                                </ul>
+                                <p><strong>Idéal pour :</strong> forums, classes, entretiens jeunes/familles.</p>
+                            </div>
+                            <a href={LINKS.NOTION} target="_blank" rel="noopener noreferrer" className="w-full text-center py-3 rounded-xl font-bold text-white shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5" style={{ backgroundColor: COLORS.orange }}>
+                                Commander le kit animateur
+                            </a>
+                        </div>
+
+                        {/* Pack 2 */}
+                        <div className="border border-slate-200 rounded-3xl p-8 hover:shadow-xl transition-shadow bg-white flex flex-col">
+                            <div className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-400">Pack 2</div>
+                            <h3 className="text-2xl font-bold mb-4 text-slate-800">Grandes Entreprises / Filières</h3>
+                            <div className="text-sm text-slate-600 mb-6 flex-grow">
+                                <p className="mb-4"><strong>Pour :</strong> Grands groupes (animations, portes ouvertes, actions filières).</p>
+                                <p className="mb-4"><strong>Valeur :</strong> Valoriser vos PMI et les métiers industriels (filières, sous-traitants) auprès des jeunes et familles.</p>
+                                <p><strong>Inclus :</strong> Kit de déploiement multi-sites + adaptation au contexte.</p>
+                            </div>
+                             <a href={LINKS.NOTION} target="_blank" rel="noopener noreferrer" className="w-full text-center py-3 rounded-xl font-bold text-white shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5" style={{ backgroundColor: COLORS.lime }}>
+                                Commander le kit animateur
+                            </a>
+                        </div>
+
+                        {/* Pack 3 */}
+                        <div className="border-2 rounded-3xl p-8 shadow-xl bg-white flex flex-col transform md:-translate-y-4 relative" style={{ borderColor: COLORS.green }}>
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-green-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Gratuit (sélection)</div>
+                            <div className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-400">Pack 3</div>
+                            <h3 className="text-2xl font-bold mb-4 text-slate-800">Entreprise (PMI) - Pépite</h3>
+                            <div className="text-sm text-slate-600 mb-6 flex-grow">
+                                <p className="mb-4 font-bold text-green-700">Transformez votre réalité en atout marque employeur sans effort.</p>
+                                <div className="bg-green-50 p-3 rounded-lg mb-4 text-xs">
+                                    <strong>Mise en œuvre : 2h chrono</strong> avec le chargé de projet CPME pour mettre en récit vos métiers.
+                                </div>
+                                <p className="mb-2"><strong>Bénéfices :</strong></p>
+                                <ul className="list-disc pl-5 space-y-1">
+                                    <li>Visibilité catalogue & jeu</li>
+                                    <li>Valorisation collaborateurs</li>
+                                    <li>Vivier de candidats réalistes</li>
+                                </ul>
+                            </div>
+                            <a href={LINKS.NOTION} target="_blank" rel="noopener noreferrer" className="w-full text-center py-3 rounded-xl font-bold text-white shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5" style={{ backgroundColor: COLORS.green }}>
+                                Rejoindre le jeu
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Focus Parents */}
+                    <div className="mt-12 bg-indigo-50 rounded-3xl p-8 md:p-10 border border-indigo-100 flex flex-col md:flex-row items-center gap-8">
+                        <div className="md:w-2/3">
+                            <h3 className="text-2xl font-bold mb-4 text-indigo-900">Focus Parents & Familles</h3>
+                            <p className="text-slate-700 mb-4">
+                                L’industrie a changé, mais les clichés ont la vie dure. Le jeu aide à redécouvrir l’industrie sous un prisme réel : <strong>conditions adaptées</strong> (ateliers propres, sécurisés) et <strong>sens & impact</strong> (défis écologiques).
+                            </p>
+                            <p className="text-sm text-slate-600">Il permet d’initier le dialogue à la maison et d’explorer ensemble les opportunités locales.</p>
+                        </div>
+                        <div className="md:w-1/3 text-center">
+                            <a href={LINKS.NOTION} target="_blank" rel="noopener noreferrer" className="inline-block px-6 py-3 rounded-full font-bold text-white shadow-lg bg-indigo-600 hover:bg-indigo-700 transition-colors">
+                                Recevoir le kit (PDF)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const Customization = () => (
+            <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
+                <Blob className="top-0 right-0 w-[500px] h-[500px] translate-x-1/3 -translate-y-1/3 opacity-20" color={COLORS.orange} />
+                
+                <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
+                    <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Un jeu qui s’adapte à votre réalité</h2>
+                    <p className="text-lg text-slate-300 mb-12">Nous pouvons créer une version personnalisée du deck, pour coller à vos métiers, votre territoire et votre public.</p>
+
+                    <div className="grid md:grid-cols-2 gap-8 text-left mb-12">
+                        <div>
+                            <h4 className="font-bold text-xl mb-4" style={{ color: COLORS.lime }}>Ce qui peut être personnalisé</h4>
+                            <ul className="space-y-2 text-sm text-slate-300">
+                                <li>• <strong>Métiers :</strong> Sélection prioritaire (tension, avenir).</li>
+                                <li>• <strong>Missions :</strong> Scénarios basés sur vos situations réelles (prod, maintenance, RSE).</li>
+                                <li>• <strong>Entreprises :</strong> Mise en valeur de vos atouts locaux.</li>
+                                <li>• <strong>Profils :</strong> Verbatims issus de vos équipes.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-xl mb-4" style={{ color: COLORS.skyBlue }}>Bénéfices directs</h4>
+                            <ul className="space-y-2 text-sm text-slate-300">
+                                <li>• <strong>PMI :</strong> Valoriser métiers, recrutement, portes ouvertes.</li>
+                                <li>• <strong>Partenaire :</strong> Format commun, alignement, impact.</li>
+                                <li>• <strong>Prescripteur :</strong> Objectifs pédagogiques, gain de temps.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="inline-block p-1 rounded-full bg-gradient-to-r from-orange-400 to-pink-500">
+                        <a href={LINKS.CALCOM} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full font-bold bg-slate-900 text-white hover:bg-slate-800 transition-colors flex items-center gap-2">
+                            Parler d’une version personnalisée (15 min) <Icon name="ArrowRight" size={18} />
+                        </a>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-3">On part de vos objectifs, on propose une adaptation simple.</p>
+                </div>
+            </section>
+        );
+
+        const SocialProof = () => (
+            <section className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4">
+                    <h2 className="text-3xl font-extrabold text-center mb-12 text-slate-900">Ils ont vu des déclics.<br/>Et ils en parlent mieux que nous.</h2>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {[
+                            { quote: "Avant, les élèves pensaient que l'usine c'était Charlie Chaplin. Pendant l'atelier, ils se sont pris au jeu des missions. Après, ils posaient des questions sur les stages.", author: "Enseignant Lycée Pro", role: "Utilisateur Pack Établissement" },
+                            { quote: "Ce que j'ai préféré, c'est voir les parents découvrir que nos métiers sont hyper technologiques. Ça change tout pour l'orientation de leurs enfants.", author: "DRH Industrie Mécanique", role: "Utilisatrice Pack Entreprise" },
+                            { quote: "Enfin un outil qui ne finit pas au placard. C'est simple, c'est beau, et ça permet d'aborder des sujets complexes comme la RSE sans être ennuyeux.", author: "Chargée de mission Emploi", role: "Partenaire Territoire" },
+                        ].map((t, i) => (
+                            <div key={i} className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                                <div className="mb-4">
+                                    {[1,2,3,4,5].map(star => <span key={star} className="text-yellow-400">★</span>)}
+                                </div>
+                                <p className="text-slate-700 italic mb-6 text-sm">"{t.quote}"</p>
+                                <div>
+                                    <div className="font-bold text-slate-900 text-sm">{t.author}</div>
+                                    <div className="text-xs text-slate-500">{t.role}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        );
+
+        const FAQ = () => {
+            const [openIndex, setOpenIndex] = useState(null);
+            const questions = [
+                { q: "À qui s’adresse Faire l’Industrie ?", a: "Aux entreprises (PMI) pour leurs visites, aux enseignants pour l'orientation, et aux partenaires de l'emploi." },
+                { q: "Combien de temps faut-il pour animer ?", a: "De 45 minutes (format découverte) à une demi-journée (format immersion). Le jeu seul dure 15-20 min." },
+                { q: "Est-ce adapté à un public hétérogène ?", a: "Oui, le jeu est visuel et collaboratif. Il fonctionne très bien même avec des publics peu motivés au départ." },
+                { q: "En quoi est-ce différent d’une visite classique ?", a: "C'est actif. Les participants ne font pas que regarder, ils résolvent des missions et se projettent." },
+                { q: "Comment obtenir le jeu / le kit ?", a: "Téléchargez le kit de présentation via le bouton ci-dessous, tout y est expliqué." },
+                { q: "Peut-on adapter le jeu à nos métiers ?", a: "Absolument. Nous proposons des niveaux de personnalisation (léger ou complet) selon vos besoins." }
+            ];
+
+            return (
+                <section className="py-20 bg-[#F7FDF9]">
+                    <div className="max-w-3xl mx-auto px-4">
+                        <h2 className="text-3xl font-extrabold text-center mb-10 text-slate-900">Questions Fréquentes</h2>
+                        <div className="space-y-4">
+                            {questions.map((item, index) => (
+                                <div key={index} className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                                    <button 
+                                        onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                        className="w-full flex justify-between items-center p-5 text-left font-bold text-slate-800 hover:bg-slate-50 transition-colors"
+                                    >
+                                        {item.q}
+                                        <div className={`transform transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''}`}>
+                                            <Icon name="ChevronDown" size={20} />
+                                        </div>
+                                    </button>
+                                    {openIndex === index && (
+                                        <div className="p-5 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-50">
+                                            {item.a}
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const LeadMagnet = () => {
+            const [email, setEmail] = useState("");
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (email) {
+                    const subject = encodeURIComponent("Demande de Mini-Kit Faire l'Industrie");
+                    const body = encodeURIComponent(`Bonjour,\n\nJe souhaite recevoir le mini-kit "7 idées reçues".\n\nMon email : ${email}`);
+                    window.location.href = `mailto:fliut@cpmerhone.fr?subject=${subject}&body=${body}`;
+                }
+            };
+
+            return (
+                <section className="py-20 bg-white border-t border-slate-100">
+                    <div className="max-w-4xl mx-auto px-4 text-center">
+                        <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-[3rem] p-10 md:p-16 relative overflow-hidden">
+                            <div className="relative z-10">
+                                <div className="inline-block bg-white px-3 py-1 rounded-full text-xs font-bold text-indigo-600 mb-4 shadow-sm">Cadeau</div>
+                                <h2 className="text-3xl font-extrabold mb-4 text-slate-900">Mini-kit offert : 7 idées reçues qui sabotent l’attractivité</h2>
+                                <p className="text-slate-600 mb-8 max-w-lg mx-auto">Un PDF + une séquence de 15 min "prête à animer" pour retourner les clichés instantanément.</p>
+                                
+                                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+                                    <input 
+                                        type="email" 
+                                        placeholder="Votre email pro" 
+                                        className="px-5 py-3 rounded-full border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 flex-grow"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
+                                    <button type="submit" className="px-6 py-3 rounded-full font-bold text-white shadow-lg bg-indigo-600 hover:bg-indigo-700 transition-colors">
+                                        Recevoir le mini-kit
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const JobCard = ({ job }) => {
+            const isModern = job.type === 'moderne';
+            const gradientStyle = isModern ? { background: `linear-gradient(135deg, ${COLORS.orange}, ${COLORS.lime})` } : { background: `linear-gradient(135deg, ${COLORS.green}, ${COLORS.teal})` };
+            const headerIcon = isModern ? 'Zap' : 'Sun';
+            const headerText = isModern ? 'Métier d\'Avenir & Tech' : 'Savoir-faire & Humain';
+            const accentColor = isModern ? COLORS.orange : COLORS.green;
+            const bgSoft = isModern ? 'bg-orange-50' : 'bg-green-50';
+
+            return (
+              <div className="group bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full border border-slate-100 transform hover:-translate-y-1">
+                <div style={gradientStyle} className="p-6 text-white relative overflow-hidden">
+                    <div className="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4"><Icon name="Factory" size={120} /></div>
+                    <div className="relative z-10">
+                        <div className="flex justify-between items-start mb-2">
+                            <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-white/20 text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm"><Icon name={headerIcon} size={12} /> {headerText}</span>
+                            {job.status === 'Validé' && <span className="bg-white text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1" style={{ color: COLORS.green }}><Icon name="CheckCircle" size={10} /> Validé</span>}
+                        </div>
+                        <h3 className="text-2xl font-bold mb-1">{job.title}</h3>
+                        <div className="text-white/90 text-sm font-medium flex items-center gap-1"><Icon name="Factory" size={14} /> {job.company}</div>
+                    </div>
+                </div>
+                <div className="p-6 flex flex-col flex-grow gap-5">
+                    <div><div className="text-xs font-bold uppercase tracking-widest mb-1 flex items-center gap-2" style={{ color: accentColor }}><Icon name="Target" size={14} /> La Mission</div><p className="text-slate-700 text-sm leading-snug">{job.mission}</p></div>
+                    <div><div className="text-xs font-bold uppercase tracking-widest mb-1 flex items-center gap-2" style={{ color: accentColor }}><Icon name="Smile" size={14} /> Le cadre de travail</div><p className="text-slate-600 text-sm leading-snug italic">"{job.environment}"</p></div>
+                    <div className={`mt-auto p-3 rounded-xl ${bgSoft} border border-slate-100`}><p className="text-xs font-bold uppercase mb-1 flex items-center gap-1" style={{ color: accentColor }}><Icon name="Zap" size={12} /> L'Impact</p><p className="text-sm font-bold" style={{ color: accentColor }}>{job.impact}</p></div>
+                    <div className="pt-2 border-t border-slate-50 flex flex-wrap gap-2">{job.softSkills.slice(0,3).map((skill, idx) => <span key={idx} className="px-2 py-1 rounded-md bg-slate-50 text-slate-500 text-[10px] font-semibold border border-slate-100">{skill}</span>)}</div>
+                </div>
+              </div>
+            );
+        };
+
+        const CatalogueSection = () => (
+            <section className="py-24 bg-white rounded-t-[3rem] shadow-2xl relative z-10 border-t border-slate-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="text-center mb-16">
+                     <div className="inline-block p-3 rounded-full bg-slate-50 mb-4 text-green-600"><Icon name="Search" size={32} /></div>
+                     <h2 className="text-4xl font-extrabold mb-4" style={{ color: COLORS.darkText }}>Les Pépites Locales</h2>
+                     <p className="text-lg text-slate-500 max-w-2xl mx-auto">Une sélection de métiers dans des entreprises où l'humain, la technologie, et les dimensions écologiques et sociales s'équilibrent.</p>
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {JOBS_DATA.map((job, i) => <JobCard key={i} job={job} />)}
+                  </div>
+                </div>
+            </section>
+        );
+
+        const ImpactSection = () => (
+            <section className="py-32 text-white relative overflow-hidden" style={{ backgroundColor: COLORS.footerBg }}>
+                <div className="absolute top-0 left-0 w-[800px] h-[800px] rounded-full blur-3xl opacity-20 -translate-x-1/3 -translate-y-1/3" style={{ backgroundColor: COLORS.lime }}></div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                   <div className="text-center mb-20">
+                     <h2 className="text-4xl font-extrabold mb-6">La dynamique du projet</h2>
+                     <p className="font-bold text-lg" style={{ color: COLORS.skyBlue }}>Comment nous changeons la donne ensemble</p>
+                   </div>
+                   <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                     <div className="hidden md:block absolute top-8 left-0 w-full h-1 bg-white/10 rounded-full"></div>
+                     {[
+                       { icon: "Search", title: "1. Intégration", text: "Intégration en 2h chrono des entreprises modernes avec le chargé du projet de la CPME du Rhône." },
+                       { icon: "Users", title: "2. Diffusion", text: "Déploiement par nos partenaires dans les contextes où sont les parents et les jeunes." },
+                       { icon: "MessageCircle", title: "3. Inspiration", text: "Les parents jouent, découvrent, apprennent et en parlent à leurs enfants." },
+                       { icon: "Star", title: "4. Transformation", text: "Les préjugés tombent, l'image de l'industrie est revalorisée durablement." }
+                     ].map((s, i) => (
+                       <div key={i} className="relative z-10 text-center group">
+                         <div className="w-16 h-16 mx-auto rounded-2xl rotate-45 flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300 border-4" style={{ backgroundColor: COLORS.green, borderColor: COLORS.lime }}>
+                           <Icon name={s.icon} className="-rotate-45 text-white" size={28} />
+                         </div>
+                         <h3 className="text-xl font-bold mb-3" style={{ color: COLORS.lime }}>{s.title}</h3>
+                         <p className="text-slate-300 text-sm px-4 leading-relaxed">{s.text}</p>
+                       </div>
+                     ))}
+                   </div>
+                </div>
+            </section>
+        );
+
+        const Footer = () => {
+            const currentYear = new Date().getFullYear();
+
+            return (
+                <footer className="py-16 text-white text-sm" style={{ backgroundColor: COLORS.footerBg }}>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <div className="mb-12">
+                            <h2 className="text-3xl font-extrabold tracking-tight mb-2">FAIRE L'INDUSTRIE</h2>
+                        </div>
+                        
+                        {/* CTAs Footer */}
+                        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+                            <a href={LINKS.NOTION} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full font-bold text-white shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1 flex items-center justify-center gap-2" style={{ backgroundColor: COLORS.orange }}>
+                                <Icon name="Download" size={20} /> Recevoir le kit (PDF)
+                            </a>
+                            <a href={LINKS.CALCOM} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full font-bold bg-white text-slate-900 hover:bg-slate-100 transition-colors flex items-center justify-center gap-2">
+                                <Icon name="Calendar" size={20} /> Réserver une démo
+                            </a>
+                        </div>
+
+                        <p className="text-xs font-bold uppercase tracking-widest mb-8" style={{ color: COLORS.skyBlue }}>Les porteurs du dispositif</p>
+
+                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-12 py-8 rounded-2xl mx-auto max-w-4xl px-8">
+                            <ImageWithFallback src="logo 42.jpg" alt="Logo CPME 42" className="h-20 md:h-24 w-auto object-contain bg-white rounded-xl p-2" width="150" height="80" loading="lazy" placeholderSrc="https://placehold.co/150x80/white/262272?text=CPME+42" />
+                            <ImageWithFallback src="logo 69.jpg" alt="Logo CPME 69" className="h-20 md:h-24 w-auto object-contain bg-white rounded-xl p-2" width="150" height="80" loading="lazy" placeholderSrc="https://placehold.co/150x80/white/262272?text=CPME+69" />
+                            <ImageWithFallback src="logo Ilyse.jpg" alt="Logo Fondation Ilyse" className="h-20 md:h-24 w-auto object-contain bg-white rounded-xl p-2" width="150" height="80" loading="lazy" placeholderSrc="https://placehold.co/150x80/white/262272?text=Fondation+Ilyse" />
+                        </div>
+
+                        <div className="border-t border-white/10 pt-8 text-slate-400 text-xs">
+                            <span>© {currentYear} Faire l'Industrie. Tous droits réservés. CPME du Rhône, Lyon.</span>
+                        </div>
+                    </div>
+                </footer>
+            );
+        };
+
+        // --- APP PRINCIPALE ---
+        const App = () => {
+            return (
+                <div className="text-slate-800 selection:bg-green-100 selection:text-green-900">
+                    <nav className="absolute top-0 w-full z-50 py-6">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                            <div className="cursor-pointer">
+                                <ImageWithFallback 
+                                    src="fi-logo.webp"
+                                    placeholderSrc={`https://placehold.co/180x60/transparent/${COLORS.green.replace('#','')}?text=Faire+l'Industrie`}
+                                    alt="Logo Faire l'Industrie"
+                                    className="h-24 md:h-32 w-auto object-contain"
+                                    width="200" height="112" fetchPriority="high"
+                                />
+                            </div>
+                            <a href={LINKS.NOTION} target="_blank" rel="noopener noreferrer" className="hidden sm:block px-6 py-2 rounded-full font-bold text-sm text-white shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5" style={{ backgroundColor: COLORS.green }}>
+                                Nous rejoindre
+                            </a>
+                        </div>
+                    </nav>
+
+                    <main>
+                        <Hero />
+                        <ProblemSolution />
+                        <GameComposition />
+                        <CycleSteps />
+                        <Formats />
+                        <Packs />
+                        <Customization />
+                        <SocialProof />
+                        <LeadMagnet />
+                        <FAQ />
+                        <CatalogueSection />
+                        <ImpactSection />
+                    </main>
+
+                    <Footer />
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>

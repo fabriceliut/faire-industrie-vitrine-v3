@@ -84,7 +84,7 @@
   /* --- Font families --- */
   --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
-  --font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
+  --font-mono: 'Geist Mono', monospace;
 
   /* --- Spacing (base 8px) --- */
   --space-1: 8px;

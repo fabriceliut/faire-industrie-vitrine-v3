@@ -1,12 +1,12 @@
 /* ============================================
    FAIRE L'INDUSTRIE — Self-hosted Fonts
-   Inter (variable) + Geist Mono (variable)
+   Inter (variable woff2) + Geist Mono (variable woff2)
    ============================================ */
 
 /* Inter — Variable (weight 100–900) */
 @font-face {
   font-family: 'Inter';
-  src: url('../assets/fonts/Inter-100_900.ttf') format('truetype');
+  src: url('../assets/fonts/Inter-variable.woff2') format('woff2');
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
@@ -15,17 +15,8 @@
 /* Geist Mono — Variable (weight 100–900) */
 @font-face {
   font-family: 'Geist Mono';
-  src: url('../assets/fonts/GeistMono-100_900.ttf') format('truetype');
+  src: url('../assets/fonts/GeistMono-variable.woff2') format('woff2');
   font-weight: 100 900;
-  font-display: swap;
-  font-style: normal;
-}
-
-/* JetBrains Mono — Variable (weight 100–800), fallback mono */
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('../assets/fonts/JetBrains_Mono-100_800.ttf') format('truetype');
-  font-weight: 100 800;
   font-display: swap;
   font-style: normal;
 }

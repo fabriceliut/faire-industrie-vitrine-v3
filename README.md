@@ -1,7 +1,10 @@
 # Faire l'Industrie — V3
 
-Site vitrine premium pour le projet **Faire l'Industrie** (CPME du Rhône).  
+Site vitrine pour le projet **Faire l'Industrie** (CPME Rhône et Loire).  
+Jeu de cartes « Portrait d'avenir » pour sensibiliser aux métiers industriels du territoire AURA.  
 100 % statique — HTML / CSS / JS vanilla — déployable sur **GitHub Pages**.
+
+**Chiffres clés :** +30 entreprises, +50 métiers industriels et artisanaux, 15 min par session.
 
 ---
 
@@ -19,7 +22,7 @@ styles/
   tokens.css            ← Design tokens (couleurs, typo, radii, shadows, spacing)
   base.css              ← Reset, typographie, grille, utilities, animations reveal
   components.css        ← Navbar, boutons, cartes, badges, accordion, stepper, CTA band
-  sections.css          ← Styles spécifiques par section (hero, packs, footer…)
+  sections.css          ← Styles spécifiques par section (hero, chiffres clés, pour-qui, synergie, packs, footer…)
 scripts/
   main.js               ← Navbar sticky, menu mobile, accordion, scroll reveal, card tilt, job cards
 moodboard/              ← Images d'inspiration (non intégrées au site)
@@ -73,13 +76,25 @@ Puis ouvrir `http://localhost:8000`.
 Éditez directement `index.html`. Chaque section est commentée et identifiable :
 ```html
 <!-- ===== HERO ===== -->
+<!-- ===== CHIFFRES CLÉS ===== -->
 <!-- ===== PROBLÈME ===== -->
+<!-- ===== POUR QUI ===== -->
+<!-- ===== COMPOSITION DU JEU ===== -->
+<!-- ===== PROGRESSION ===== -->        (+ bloc "Ce qu'on obtient en sortie")
+<!-- ===== DEPLOIEMENT ===== -->
 <!-- ===== FORMATS ===== -->
-...
+<!-- ===== PACKS ===== -->
+<!-- ===== EN SYNERGIE ===== -->
+<!-- ===== PERSONNALISATION ===== -->
+<!-- ===== TÉMOIGNAGES ===== -->
+<!-- ===== FAQ ===== -->
+<!-- ===== CATALOGUE (PÉPITES) ===== -->
+<!-- ===== DYNAMIQUE DU PROJET ===== -->
 ```
 
 ### Données métiers (Pépites)
 Le catalogue des métiers est dans `scripts/main.js`, dans le tableau `JOBS_DATA`.  
+Les cartes affichées sur le site sont un **extrait** du catalogue complet (+30 entreprises, +50 métiers).  
 Ajoutez ou modifiez un objet pour mettre à jour une fiche :
 ```js
 { id: '16', type: 'moderne', title: "Nouveau Métier", company: "Entreprise", status: 'Validé',

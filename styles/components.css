@@ -672,7 +672,7 @@
 }
 
 .accordion__item.is-open .accordion__panel {
-  max-height: 300px;
+  max-height: 500px;
 }
 
 @media (prefers-reduced-motion: reduce) {

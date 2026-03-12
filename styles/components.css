@@ -33,9 +33,9 @@
 }
 
 .navbar__logo img {
-  height: 80px;
+  height: 60px;
   width: auto;
-  aspect-ratio: 200 / 112;
+  object-fit: contain;
   transition: height var(--duration-base) var(--ease-out);
 }
 
@@ -44,7 +44,7 @@
 }
 
 @media (min-width: 768px) {
-  .navbar__logo img { height: 96px; }
+  .navbar__logo img { height: 72px; }
   .navbar.is-scrolled .navbar__logo img { height: 40px; }
 }
 

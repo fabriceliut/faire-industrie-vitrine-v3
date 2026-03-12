@@ -51,10 +51,10 @@
     .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .25s,box-shadow .25s,padding .25s}
     .navbar.is-scrolled{background:rgba(247,245,240,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(26,26,26,.06);padding:8px 0}
     .navbar__inner{display:flex;align-items:center;justify-content:space-between}
-    .navbar__logo img{height:80px;width:auto}
+    .navbar__logo img{height:60px;width:auto;object-fit:contain}
     .navbar__links{display:none;align-items:center;gap:24px}
     .navbar__toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;position:relative;z-index:201}
-    @media(min-width:768px){.navbar__links{display:flex}.navbar__toggle{display:none}.navbar__logo img{height:96px}}
+    @media(min-width:768px){.navbar__links{display:flex}.navbar__toggle{display:none}.navbar__logo img{height:72px}}
     .hero{position:relative;padding-top:calc(96px + 80px);padding-bottom:80px;overflow:hidden}
     .hero__grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
     @media(min-width:768px){.hero__grid{grid-template-columns:1fr 1fr;gap:64px}}
@@ -80,7 +80,7 @@
   <nav class="navbar" role="navigation" aria-label="Navigation principale">
     <div class="container navbar__inner">
       <a href="#" class="navbar__logo" aria-label="Faire l'Industrie — Accueil">
-        <img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="200" height="112" fetchpriority="high">
+        <img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="400" height="400" fetchpriority="high">
       </a>
 
       <div class="navbar__links">
@@ -983,7 +983,7 @@
   <footer class="footer" role="contentinfo">
     <div class="container text-center">
       <div class="footer__brand">
-        <img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="200" height="112" loading="lazy">
+        <img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="400" height="400" loading="lazy">
       </div>
 
       <div class="footer__ctas">

@@ -7,7 +7,7 @@
    ===================== */
 .hero {
   position: relative;
-  padding-top: calc(var(--space-10) + var(--space-8));
+  padding-top: calc(var(--space-10) + var(--space-9));
   padding-bottom: var(--space-9);
   overflow: hidden;
 }

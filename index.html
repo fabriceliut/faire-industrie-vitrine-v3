@@ -53,9 +53,9 @@
     .navbar__inner{display:flex;align-items:center;justify-content:space-between}
     .navbar__logo img{height:80px;width:auto}
     .navbar__links{display:none;align-items:center;gap:24px}
-    .navbar__toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px}
+    .navbar__toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;position:relative;z-index:201}
     @media(min-width:768px){.navbar__links{display:flex}.navbar__toggle{display:none}.navbar__logo img{height:96px}}
-    .hero{position:relative;padding-top:calc(96px + 64px);padding-bottom:80px;overflow:hidden}
+    .hero{position:relative;padding-top:calc(96px + 80px);padding-bottom:80px;overflow:hidden}
     .hero__grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
     @media(min-width:768px){.hero__grid{grid-template-columns:1fr 1fr;gap:64px}}
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
@@ -610,7 +610,7 @@
               <div style="font-size:var(--text-small);color:var(--color-muted);line-height:var(--leading-normal);flex:1">
                 <p style="margin-bottom:var(--space-2);font-weight:700;color:var(--color-primary)">Transformez votre réalité en atout marque employeur sans effort.</p>
                 <div style="background:rgba(0,159,103,0.06);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);margin-bottom:var(--space-2);font-size:var(--text-xs)">
-                  <strong style="color:var(--color-text)">Mise en œuvre : 2h chrono</strong> avec le chargé de projet CPME pour créer vos cartes métiers personnalisées.
+                  <strong style="color:var(--color-text)">Mise en œuvre : 45min chrono</strong> avec le chargé de projet CPME pour créer vos cartes métiers personnalisées.
                 </div>
                 <p style="margin-bottom:var(--space-1)"><strong style="color:var(--color-text)">Bénéfices :</strong></p>
                 <ul class="card__pack-list">
@@ -947,7 +947,7 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </span></div>
             <h3 class="stepper__title">1. Intégration</h3>
-            <p class="stepper__text">Intégration en 2h chrono des métiers de vos PMI : les cartes sont créées avec le chargé du projet CPME.</p>
+            <p class="stepper__text">Intégration en 45min chrono des métiers de vos PMI : les cartes sont créées avec le chargé du projet CPME.</p>
           </div>
 
           <div class="stepper__item reveal reveal--delay-1">

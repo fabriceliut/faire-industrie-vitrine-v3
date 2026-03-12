@@ -35,6 +35,7 @@
 .navbar__logo img {
   height: 80px;
   width: auto;
+  aspect-ratio: 200 / 112;
   transition: height var(--duration-base) var(--ease-out);
 }
 
@@ -91,6 +92,7 @@
   border-radius: var(--radius-sm);
   color: var(--color-text);
   -webkit-tap-highlight-color: transparent;
+  z-index: calc(var(--z-overlay) + 1);
 }
 
 @media (min-width: 768px) {
@@ -143,11 +145,12 @@
   bottom: 0;
   background: rgba(247, 245, 240, 0.98);
   backdrop-filter: blur(16px);
-  z-index: calc(var(--z-sticky) - 1);
+  z-index: var(--z-overlay);
   padding: 120px var(--gutter) var(--space-5);
   flex-direction: column;
   align-items: center;
   gap: var(--space-3);
+  overflow-y: auto;
 }
 
 .navbar__mobile.is-open {
@@ -250,6 +253,20 @@
   font-size: var(--text-p);
 }
 
+/* Prevent buttons from overflowing on small screens */
+@media (max-width: 479px) {
+  .btn--lg {
+    padding: 14px 24px;
+    font-size: var(--text-small);
+  }
+
+  .btn {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
 .btn__icon {
   width: 18px;
   height: 18px;
@@ -297,6 +314,7 @@
   border: var(--border-1);
   overflow: hidden;
   position: relative;
+  contain: layout style;
   transition:
     transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
@@ -338,6 +356,12 @@
   padding: var(--space-3);
 }
 
+@media (max-width: 479px) {
+  .card__body {
+    padding: var(--space-2) var(--space-2) var(--space-3);
+  }
+}
+
 .card__icon {
   width: 48px;
   height: 48px;
@@ -372,6 +396,15 @@
   border-radius: var(--radius-pill);
   width: 56px;
   height: 56px;
+}
+
+.card--type .card__title {
+  font-size: var(--text-p);
+}
+
+.card--type .card__text {
+  font-size: var(--text-small);
+  line-height: var(--leading-relaxed);
 }
 
 /* Card variant: pack */
@@ -752,6 +785,18 @@
   color: var(--color-muted);
   max-width: 200px;
   margin-inline: auto;
+  line-height: var(--leading-normal);
+}
+
+@media (max-width: 479px) {
+  .stepper__number {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+  .stepper__title {
+    font-size: var(--text-p);
+  }
 }
 
 /* =====================

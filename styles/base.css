@@ -171,7 +171,11 @@ small {
 }
 
 .grid--5 {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .grid--5 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 768px) {
@@ -233,6 +237,7 @@ small {
   transition:
     opacity var(--duration-slow) var(--ease-out),
     transform var(--duration-slow) var(--ease-out);
+  will-change: opacity, transform;
 }
 
 .reveal.is-visible {

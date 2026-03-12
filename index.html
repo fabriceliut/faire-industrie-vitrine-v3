@@ -27,20 +27,50 @@
   <!-- Favicon -->
   <link rel="icon" type="image/webp" href="assets/fi-logo.webp">
 
-  <!-- Preload key fonts -->
+  <!-- Preload key font (only Inter, Geist Mono deferred) -->
   <link rel="preload" href="assets/fonts/Inter-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/GeistMono-variable.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Preload LCP -->
-  <link rel="preload" as="image" href="assets/fi-logo.webp">
-  <link rel="preload" as="image" href="assets/image_de9aba.jpg">
+  <!-- Preload LCP image with responsive sources -->
+  <link rel="preload" as="image" href="assets/image_de9aba.webp" type="image/webp" fetchpriority="high" imagesrcset="assets/image_de9aba-sm.webp 600w, assets/image_de9aba.webp 1024w" imagesizes="(max-width: 767px) 100vw, 50vw">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles/fonts.css">
-  <link rel="stylesheet" href="styles/tokens.css">
-  <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/components.css">
-  <link rel="stylesheet" href="styles/sections.css">
+  <!-- DNS prefetch for external links -->
+  <link rel="dns-prefetch" href="https://cal.com">
+  <link rel="dns-prefetch" href="https://liutnotes.notion.site">
+
+  <!-- Critical styles inlined for above-fold rendering -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{font-family:'Inter',sans-serif;font-size:1rem;line-height:1.6;color:#1A1A1A;background-color:#F7F5F0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img,svg{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;cursor:pointer;border:none;background:none}
+    ul,ol{list-style:none}
+    .container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:24px}
+    .section{padding-block:96px}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .25s,box-shadow .25s,padding .25s}
+    .navbar.is-scrolled{background:rgba(247,245,240,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(26,26,26,.06);padding:8px 0}
+    .navbar__inner{display:flex;align-items:center;justify-content:space-between}
+    .navbar__logo img{height:80px;width:auto}
+    .navbar__links{display:none;align-items:center;gap:24px}
+    .navbar__toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px}
+    @media(min-width:768px){.navbar__links{display:flex}.navbar__toggle{display:none}.navbar__logo img{height:96px}}
+    .hero{position:relative;padding-top:calc(96px + 64px);padding-bottom:80px;overflow:hidden}
+    .hero__grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+    @media(min-width:768px){.hero__grid{grid-template-columns:1fr 1fr;gap:64px}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+    h1,h2,h3{font-family:'Inter',sans-serif;font-weight:700;line-height:1.15;letter-spacing:-.03em;color:#1A1A1A}
+    h1{font-size:clamp(2.5rem,5vw,3.75rem);font-weight:800;letter-spacing:-.04em}
+  </style>
+
+  <!-- Non-critical styles loaded async -->
+  <link rel="stylesheet" href="styles/fonts.min.css">
+  <link rel="stylesheet" href="styles/tokens.min.css">
+  <link rel="stylesheet" href="styles/base.min.css">
+  <link rel="stylesheet" href="styles/components.min.css">
+  <link rel="stylesheet" href="styles/sections.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="styles/sections.min.css"></noscript>
 </head>
 <body>
   <!-- Skip link -->
@@ -137,7 +167,11 @@
         <div class="hero__visual reveal reveal--delay-2">
           <div class="hero__image-wrapper hero__image-wrapper--animated">
             <div class="hero__image-shadow"></div>
-            <img src="assets/image_de9aba.jpg" alt="Atelier jeu Faire l'Industrie — participants autour d'un deck de cartes" class="hero__image" width="500" height="500" fetchpriority="high">
+            <picture>
+              <source srcset="assets/image_de9aba-sm.webp" type="image/webp" media="(max-width: 767px)">
+              <source srcset="assets/image_de9aba.webp" type="image/webp">
+              <img src="assets/image_de9aba.jpg" alt="Atelier jeu Faire l'Industrie — participants autour d'un deck de cartes" class="hero__image" width="1024" height="768" fetchpriority="high" decoding="async">
+            </picture>
             <div class="hero__float-badge">
               <span class="hero__float-badge-number">15 min</span>
               <span class="hero__float-badge-label">En groupe</span>
@@ -562,7 +596,7 @@
               </div>
             </div>
             <div class="card__footer">
-              <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="width:100%;justify-content:center">Planifier un échange</a>
+              <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn" style="width:100%;justify-content:center;background:var(--color-lime);color:var(--color-dark)">Planifier un échange</a>
             </div>
             <span class="card__serial">FI-PK02</span>
           </div>
@@ -948,7 +982,9 @@
   <!-- ========== FOOTER ========== -->
   <footer class="footer" role="contentinfo">
     <div class="container text-center">
-      <p class="footer__brand">FAIRE L'INDUSTRIE</p>
+      <div class="footer__brand">
+        <img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="200" height="112" loading="lazy">
+      </div>
 
       <div class="footer__ctas">
         <a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
@@ -963,9 +999,18 @@
 
       <p class="footer__partners-label">Les porteurs du dispositif</p>
       <div class="footer__partners">
-        <img src="assets/logo 42.jpg" alt="Logo CPME 42" class="footer__partner-logo" width="150" height="80" loading="lazy">
-        <img src="assets/logo 69.jpg" alt="Logo CPME 69" class="footer__partner-logo" width="150" height="80" loading="lazy">
-        <img src="assets/logo Ilyse.jpg" alt="Logo Fondation Ilyse" class="footer__partner-logo" width="150" height="80" loading="lazy">
+        <picture>
+          <source srcset="assets/logo 42.webp" type="image/webp">
+          <img src="assets/logo 42.jpg" alt="Logo CPME 42" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
+        </picture>
+        <picture>
+          <source srcset="assets/logo 69.webp" type="image/webp">
+          <img src="assets/logo 69.jpg" alt="Logo CPME 69" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
+        </picture>
+        <picture>
+          <source srcset="assets/logo Ilyse.webp" type="image/webp">
+          <img src="assets/logo Ilyse.jpg" alt="Logo Fondation Ilyse" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
+        </picture>
       </div>
 
       <div class="footer__bottom">
@@ -975,6 +1020,20 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="scripts/main.js" defer></script>
+  <script src="scripts/main.min.js" defer></script>
+
+  <!-- Preconnect for external CTAs (triggered on user interaction) -->
+  <script>
+    // Lazy-load Geist Mono font (only used for small labels)
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var gm = document.createElement('link');
+      gm.rel = 'preload';
+      gm.as = 'font';
+      gm.type = 'font/woff2';
+      gm.crossOrigin = 'anonymous';
+      gm.href = 'assets/fonts/GeistMono-variable.woff2';
+      document.head.appendChild(gm);
+    }
+  </script>
 </body>
 </html>

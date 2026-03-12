@@ -13,18 +13,26 @@ Jeu de cartes « Portrait d'avenir » pour sensibiliser aux métiers industriels
 ```
 index.html              ← Page principale
 assets/                 ← Images, logos
-  fi-logo.webp
-  image_de9aba.jpg
-  logo 42.jpg
-  logo 69.jpg
-  logo Ilyse.jpg
+  fi-logo.webp          ← Logo (header + footer)
+  image_de9aba.jpg      ← Hero image (fallback)
+  image_de9aba.webp     ← Hero image desktop (WebP, 95 Ko)
+  image_de9aba-sm.webp  ← Hero image mobile (WebP, 41 Ko)
+  logo 42.jpg / .webp
+  logo 69.jpg / .webp
+  logo Ilyse.jpg / .webp
+  fonts/
+    Inter-variable.woff2
+    GeistMono-variable.woff2
 styles/
   tokens.css            ← Design tokens (couleurs, typo, radii, shadows, spacing)
   base.css              ← Reset, typographie, grille, utilities, animations reveal
   components.css        ← Navbar, boutons, cartes, badges, accordion, stepper, CTA band
-  sections.css          ← Styles spécifiques par section (hero, chiffres clés, pour-qui, synergie, packs, footer…)
+  sections.css          ← Styles spécifiques par section (hero, chiffres clés, packs, footer…)
+  fonts.css             ← @font-face declarations
+  *.min.css             ← Versions minifiées (utilisées en production)
 scripts/
   main.js               ← Navbar sticky, menu mobile, accordion, scroll reveal, card tilt, job cards
+  main.min.js           ← Version minifiée (utilisée en production)
 moodboard/              ← Images d'inspiration (non intégrées au site)
 .github/workflows/
   deploy.yml            ← Workflow GitHub Actions pour GitHub Pages
@@ -137,7 +145,7 @@ Le site reprend l'esthétique d'un **deck de cartes physiques** :
 | `--color-sky` | `#74D2D9` |
 | `--color-lime` | `#C7CD2F` |
 | `--color-teal` | `#00A895` |
-| Police titres | Sora |
+| Police titres | Inter (display) |
 | Police corps | Inter |
 | Grille | max 1200px, gutter 24-40px |
 | Breakpoints | 320 / 768 / 1280 |
@@ -147,37 +155,69 @@ Le site reprend l'esthétique d'un **deck de cartes physiques** :
 ## Checklist QA
 
 ### Responsive
-- [ ] Mobile 320px
-- [ ] Mobile 375px
-- [ ] Tablet 768px
-- [ ] Desktop 1280px+
-- [ ] Menu mobile ouvre/ferme
-- [ ] Hero image ne déborde pas
+- [x] Mobile 320px
+- [x] Mobile 375px
+- [x] Tablet 768px
+- [x] Desktop 1280px+
+- [x] Menu mobile ouvre/ferme (z-index corrigé)
+- [x] Hero image ne déborde pas
+- [x] Boutons ne débordent pas sur mobile
+- [x] Grille 5 colonnes → 1 col sur mobile, 2 col sur petit tablet
 
 ### Accessibilité
-- [ ] Un seul `<h1>`
-- [ ] Structure sémantique (header, main, section, footer)
-- [ ] Skip link présent
-- [ ] Focus visible partout (`:focus-visible`)
-- [ ] Navigation clavier (tab, enter, esc)
-- [ ] Accordion accessible (aria-expanded, aria-hidden)
-- [ ] Contrastes suffisants (4.5:1 min)
-- [ ] Images avec `alt` descriptifs
-- [ ] `lang="fr"` sur `<html>`
+- [x] Un seul `<h1>`
+- [x] Structure sémantique (header, main, section, footer)
+- [x] Skip link présent
+- [x] Focus visible partout (`:focus-visible`)
+- [x] Navigation clavier (tab, enter, esc)
+- [x] Accordion accessible (aria-expanded, aria-hidden)
+- [x] Contrastes suffisants (4.5:1 min)
+- [x] Images avec `alt` descriptifs
+- [x] `lang="fr"` sur `<html>`
 
 ### Performance
-- [ ] Pas de framework lourd (vanilla JS)
-- [ ] Preconnect Google Fonts
-- [ ] Preload images LCP
-- [ ] Images avec dimensions (pas de layout shift)
-- [ ] `loading="lazy"` sur images below-the-fold
-- [ ] `prefers-reduced-motion` respecté
+- [x] Pas de framework lourd (vanilla JS)
+- [x] Critical CSS inliné dans le `<head>`
+- [x] CSS/JS non-critique différés (sections below-fold, Geist Mono)
+- [x] Images WebP avec `<picture>` + fallback JPG
+- [x] Image hero responsive (mobile 600px / desktop 1200px)
+- [x] Preload images LCP + fonts clés
+- [x] Images avec dimensions + `aspect-ratio` (pas de layout shift)
+- [x] `loading="lazy"` sur images below-the-fold
+- [x] `content-visibility: auto` sur sections below-fold
+- [x] Fichiers CSS et JS minifiés en production
+- [x] `prefers-reduced-motion` respecté
 
 ### SEO
-- [ ] `<title>` et `<meta description>`
-- [ ] Open Graph (og:title, og:description, og:image)
-- [ ] `<link rel="canonical">`
-- [ ] Un seul `<h1>`, hiérarchie logique h2 → h3
+- [x] `<title>` et `<meta description>`
+- [x] Open Graph (og:title, og:description, og:image)
+- [x] `<link rel="canonical">`
+- [x] Un seul `<h1>`, hiérarchie logique h2 → h3
+
+---
+
+## Changelog récent
+
+### Mars 2026 — v3.1 (UI/UX mobile + performance)
+
+**Corrections mobile/tablette :**
+- Menu mobile : bouton fermer accessible (z-index corrigé au-dessus de l'overlay)
+- Grille 5 cartes : 1 colonne sur mobile, 2 sur petit tablet, 3/5 sur desktop
+- Boutons CTA : `white-space: normal` + `max-width: 100%` sur petits écrans
+- Bouton "Personnaliser le jeu" : ne déborde plus sur mobile
+- Pack cards : meilleur espacement intérieur, texte mieux aéré
+- Hero badge flottant : taille réduite sur mobile (90×90)
+- Footer : texte "FAIRE L'INDUSTRIE" remplacé par le logo image
+- Bouton Pack 2 : couleur lime alignée avec la carte
+
+**Optimisations performance (PageSpeed) :**
+- Images converties en WebP avec `<picture>` (hero : 324K → 95K desktop / 41K mobile)
+- Critical CSS inliné dans le `<head>` (supprime le render-blocking)
+- CSS sections et JS différés (`media="print"` + `onload`)
+- Font Geist Mono chargée en lazy après le load
+- Tous les CSS/JS minifiés (~25% plus légers)
+- `aspect-ratio` sur images pour éliminer le CLS
+- `content-visibility: auto` sur sections below-fold
 
 ---
 

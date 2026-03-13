@@ -140,18 +140,21 @@
 .navbar__mobile {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   background: rgba(247, 245, 240, 0.98);
   backdrop-filter: blur(16px);
   z-index: var(--z-overlay);
-  padding: 120px var(--gutter) var(--space-5);
+  padding: var(--space-5) var(--gutter);
+  padding-top: 100px;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  justify-content: flex-start;
+  gap: var(--space-2);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .navbar__mobile.is-open {

@@ -732,7 +732,7 @@
 }
 
 /* =====================
-   CATALOGUE (Pépites)
+   MÉTIERS DE LA RÉGION
    ===================== */
 .catalogue {
   background: var(--color-surface);
@@ -742,7 +742,7 @@
 }
 
 /* =====================
-   IMPACT (Dynamique du projet)
+   IMPACT (Mission du projet)
    ===================== */
 .impact {
   background: var(--color-dark);

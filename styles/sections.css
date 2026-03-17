@@ -774,7 +774,7 @@
    FOOTER
    ===================== */
 .footer {
-  background: var(--color-dark);
+  background: #1A1A1A;
   color: white;
   padding: var(--space-8) 0 var(--space-4);
 }

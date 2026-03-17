@@ -233,7 +233,7 @@
 
 .problem__solution-text {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
-  color: rgba(255,255,255,0.9);
+  color: white;
   line-height: var(--leading-relaxed);
 }
 
@@ -475,7 +475,7 @@
 
 .customization__list li {
   font-size: var(--text-small);
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.95);
   line-height: var(--leading-relaxed);
   margin-bottom: var(--space-half);
 }
@@ -508,7 +508,7 @@
 
 .customization__cta-hint {
   font-size: var(--text-xs);
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.75);
   margin-top: var(--space-1);
 }
 
@@ -566,10 +566,10 @@
 
 .key-numbers__label {
   font-size: var(--text-xs);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.95);
   line-height: 1.3;
 }
 
@@ -761,7 +761,7 @@
 }
 
 .impact .stepper__text {
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.95);
 }
 
 @media (min-width: 768px) {
@@ -858,8 +858,8 @@
 }
 
 .footer__bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255,255,255,0.15);
   padding-top: var(--space-4);
   font-size: var(--text-xs);
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.85);
 }

@@ -228,7 +228,7 @@
 .btn--dark {
   background: var(--color-dark);
   color: white;
-  box-shadow: 0 4px 16px rgba(15, 57, 43, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 159, 103, 0.2);
 }
 
 .btn--dark:hover {

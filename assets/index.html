@@ -6,7 +6,7 @@
     
     <!-- SEO & Méta-données -->
     <title>Faire l'Industrie - Le Vrai Visage de l'Industrie</title>
-    <meta name="description" content="Faites découvrir le vrai visage de l'industrie en 15 minutes grâce à un jeu pédagogique prêt à animer. Pour entreprises, enseignants et partenaires.">
+    <meta name="description" content="Faites découvrir le vrai visage de l'industrie en 20 minutes grâce à un jeu pédagogique prêt à animer. Pour entreprises, enseignants et partenaires.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://faire-industrie.fr">
     
@@ -165,7 +165,7 @@
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="text-center lg:text-left">
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6">
-                                Faites découvrir le <span style={{ color: COLORS.orange }}>Vrai Visage</span> de l'Industrie en 15 minutes
+                                Faites découvrir le <span style={{ color: COLORS.orange }}>Vrai Visage</span> de l'Industrie en 20 minutes
                             </h1>
                             <p className="text-lg md:text-xl text-slate-600 mb-8 font-medium">
                                 Pour les entreprises (PMI), prescripteurs et partenaires du territoire AURA qui veulent créer un déclic durable, sans logistique lourde.
@@ -174,7 +174,7 @@
                             <ul className="space-y-3 mb-10 text-left inline-block">
                                 {[
                                     "Casse les clichés : une industrie moderne, utile, locale.",
-                                    "Rend les métiers concrets : missions, environnements, impacts, profils.",
+                                    "Rend les métiers concrets : missions, environnements, engagements, profils.",
                                     "Déclenche des prochaines étapes : visite, stage, rencontre, formation."
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-start gap-3">
@@ -214,7 +214,7 @@
                                     placeholderSrc="https://placehold.co/500x500/eee/999?text=Atelier+Jeu"
                                 />
                                 <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-full shadow-xl border-4 flex flex-col items-center justify-center w-36 h-36 z-20 animate-bounce" style={{ borderColor: COLORS.orange }}>
-                                    <span className="font-extrabold text-2xl" style={{ color: COLORS.green }}>15 min</span>
+                                    <span className="font-extrabold text-2xl" style={{ color: COLORS.green }}>20 min</span>
                                     <span className="text-slate-500 text-xs font-bold uppercase text-center leading-tight">En groupe</span>
                                 </div>
                             </div>
@@ -279,7 +279,7 @@
                         {[
                             { label: "Carte Métier", text: "Ce qu'on fait vraiment au quotidien.", color: COLORS.orange, icon: "Factory" },
                             { label: "Carte Mission", text: "Une situation réelle à résoudre en équipe.", color: COLORS.skyBlue, icon: "Target" },
-                            { label: "Carte Impact", text: "Entreprise & utilité (Recto/Verso).", color: COLORS.green, icon: "Star" },
+                            { label: "Carte Engagements", text: "Entreprise & engagements (Recto/Verso).", color: COLORS.green, icon: "Star" },
                             { label: "Carte Profil", text: "Verbatims, motivations, ce qui plaît.", color: COLORS.lime, icon: "Users" },
                             { label: "Carte Formation", text: "Chemins d'accès, étapes, prérequis.", color: COLORS.teal, icon: "GraduationCap" }
                         ].map((card, i) => (
@@ -573,7 +573,7 @@
                             <div className="relative z-10">
                                 <div className="inline-block bg-white px-3 py-1 rounded-full text-xs font-bold text-indigo-600 mb-4 shadow-sm">Cadeau</div>
                                 <h2 className="text-3xl font-extrabold mb-4 text-slate-900">Mini-kit offert : 7 idées reçues qui sabotent l’attractivité</h2>
-                                <p className="text-slate-600 mb-8 max-w-lg mx-auto">Un PDF + une séquence de 15 min "prête à animer" pour retourner les clichés instantanément.</p>
+                                <p className="text-slate-600 mb-8 max-w-lg mx-auto">Un PDF + une séquence de 20 min "prête à animer" pour retourner les clichés instantanément.</p>
                                 
                                 <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
                                     <input 
@@ -619,7 +619,7 @@
                 <div className="p-6 flex flex-col flex-grow gap-5">
                     <div><div className="text-xs font-bold uppercase tracking-widest mb-1 flex items-center gap-2" style={{ color: accentColor }}><Icon name="Target" size={14} /> La Mission</div><p className="text-slate-700 text-sm leading-snug">{job.mission}</p></div>
                     <div><div className="text-xs font-bold uppercase tracking-widest mb-1 flex items-center gap-2" style={{ color: accentColor }}><Icon name="Smile" size={14} /> Le cadre de travail</div><p className="text-slate-600 text-sm leading-snug italic">"{job.environment}"</p></div>
-                    <div className={`mt-auto p-3 rounded-xl ${bgSoft} border border-slate-100`}><p className="text-xs font-bold uppercase mb-1 flex items-center gap-1" style={{ color: accentColor }}><Icon name="Zap" size={12} /> L'Impact</p><p className="text-sm font-bold" style={{ color: accentColor }}>{job.impact}</p></div>
+                    <div className={`mt-auto p-3 rounded-xl ${bgSoft} border border-slate-100`}><p className="text-xs font-bold uppercase mb-1 flex items-center gap-1" style={{ color: accentColor }}><Icon name="Zap" size={12} /> Engagements</p><p className="text-sm font-bold" style={{ color: accentColor }}>{job.impact}</p></div>
                     <div className="pt-2 border-t border-slate-50 flex flex-wrap gap-2">{job.softSkills.slice(0,3).map((skill, idx) => <span key={idx} className="px-2 py-1 rounded-md bg-slate-50 text-slate-500 text-[10px] font-semibold border border-slate-100">{skill}</span>)}</div>
                 </div>
               </div>

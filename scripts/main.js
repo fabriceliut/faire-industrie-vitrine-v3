@@ -226,7 +226,7 @@
             '<p class="card__field-text" style="color:var(--color-muted);font-style:italic">"' + job.environment + '"</p>' +
           '</div>' +
           '<div class="card__impact-box" style="margin-top:auto;padding:var(--space-2);border-radius:var(--radius-md);background:' + bgSoft + '">' +
-            '<p class="card__field-label" style="color:' + accentColor + ';margin-bottom:4px">⚡ L\'Impact</p>' +
+            '<p class="card__field-label" style="color:' + accentColor + ';margin-bottom:4px">⚡ Engagements</p>' +
             '<p style="font-size:var(--text-small);font-weight:700;color:' + accentColor + '">' + job.impact + '</p>' +
           '</div>' +
           '<div class="card__skills">' +

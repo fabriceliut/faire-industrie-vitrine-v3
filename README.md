@@ -4,7 +4,7 @@ Site vitrine pour le projet **Faire l'Industrie** (CPME Rhône et Loire).
 Jeu de cartes « Portrait d'avenir » pour sensibiliser aux métiers industriels du territoire AURA.  
 100 % statique — HTML / CSS / JS vanilla — déployable sur **GitHub Pages**.
 
-**Chiffres clés :** +45 entreprises, +100 métiers industriels et artisanaux, 15 min par session.
+**Chiffres clés :** +45 entreprises, +100 métiers industriels et artisanaux, 20 min par session.
 
 ---
 

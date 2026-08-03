@@ -4,7 +4,7 @@ Site vitrine pour le projet **Faire l'Industrie** (CPME Rhône et Loire).
 Jeu de cartes « Portrait d'avenir » pour sensibiliser aux métiers industriels du territoire AURA.  
 100 % statique — HTML / CSS / JS vanilla — déployable sur **GitHub Pages**.
 
-**Chiffres clés :** +30 entreprises, +50 métiers industriels et artisanaux, 15 min par session.
+**Chiffres clés :** +45 entreprises, +100 métiers industriels et artisanaux, 15 min par session.
 
 ---
 
@@ -102,7 +102,7 @@ Puis ouvrir `http://localhost:8000`.
 
 ### Données métiers (Pépites)
 Le catalogue des métiers est dans `scripts/main.js`, dans le tableau `JOBS_DATA`.  
-Les cartes affichées sur le site sont un **extrait** du catalogue complet (+30 entreprises, +50 métiers).  
+Les cartes affichées sur le site sont un **extrait** du catalogue complet (+45 entreprises, +100 métiers).  
 Ajoutez ou modifiez un objet pour mettre à jour une fiche :
 ```js
 { id: '16', type: 'moderne', title: "Nouveau Métier", company: "Entreprise", status: 'Validé',

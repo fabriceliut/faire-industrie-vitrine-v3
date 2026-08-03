@@ -149,9 +149,22 @@
 .hero__float-badge-number {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 1.75rem;
-  letter-spacing: -0.03em;
+  display: block;
+  text-align: center;
   color: var(--color-primary);
+}
+
+.hero__float-badge-number-big {
+  font-weight: 800;
+  font-size: 1.9rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.hero__float-badge-number-unit {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
   line-height: 1;
 }
 

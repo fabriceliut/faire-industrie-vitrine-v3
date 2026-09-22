@@ -82,9 +82,12 @@
     /* 16:9 pitch video */
     .pitch-video{position:relative;max-width:960px;margin-inline:auto;aspect-ratio:16/9;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-elevate);border:6px solid #fff;background:var(--color-primary)}
     .pitch-video iframe,.pitch-video video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-    .pitch-video__placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-2);color:#fff;background:linear-gradient(135deg,var(--color-primary),var(--color-teal));text-align:center;padding:var(--space-4)}
+    .pitch-video__preview{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;overflow:hidden;background:var(--color-primary);cursor:pointer}
+    .pitch-video__preview img{width:100%;height:100%;object-fit:cover;display:block}
+    .pitch-video__overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-2);color:#fff;background:rgba(0,40,32,.28);text-align:center;padding:var(--space-4);transition:background var(--duration-base)}
+    .pitch-video__preview:hover .pitch-video__overlay,.pitch-video__preview:focus-visible .pitch-video__overlay{background:rgba(0,40,32,.12)}
     .pitch-video__play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;transition:transform var(--duration-base) var(--ease-spring),background var(--duration-base)}
-    .pitch-video__placeholder:hover .pitch-video__play{transform:scale(1.06);background:rgba(255,255,255,.28)}
+    .pitch-video__preview:hover .pitch-video__play,.pitch-video__preview:focus-visible .pitch-video__play{transform:scale(1.06);background:rgba(255,255,255,.28)}
     .pitch-video__label{font-weight:700;font-size:var(--text-p)}
     .pitch-video__hint{font-size:var(--text-xs);color:rgba(255,255,255,.85);max-width:360px}
     .pitch-video__caption{text-align:center;font-size:var(--text-small);color:var(--color-muted);margin-top:var(--space-2)}
@@ -176,7 +179,15 @@
 
         <!-- 16:9 PITCH VIDEO -->
         <div class="pitch-video reveal reveal--delay-2">
-          <iframe src="https://www.youtube-nocookie.com/embed/sqV8nLHgb-w" title="Le pitch pour les entreprises - Faire l'Industrie" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <button class="pitch-video__preview" type="button" aria-label="Lire le pitch pour les entreprises">
+            <img src="https://i.ytimg.com/vi/sqV8nLHgb-w/hqdefault.jpg" alt="Aperçu du pitch pour les entreprises" width="480" height="360" loading="lazy" decoding="async">
+            <span class="pitch-video__overlay" aria-hidden="true">
+              <span class="pitch-video__play">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+              <span class="pitch-video__label">Le pitch pour les entreprises</span>
+            </span>
+          </button>
         </div>
         <p class="pitch-video__caption reveal">Comprendre en quelques minutes pourquoi rejoindre le Premier Cercle.</p>
       </div>
@@ -571,6 +582,11 @@
   </footer>
 
   <!-- Scripts (mêmes que l'accueil : navbar, menu mobile, reveal, tilt) -->
+  <script>
+    document.querySelector('.pitch-video__preview')?.addEventListener('click', function () {
+      this.outerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/sqV8nLHgb-w?autoplay=1" title="Le pitch pour les entreprises - Faire l\'Industrie" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+    });
+  </script>
   <script src="scripts/main.min.js" defer></script>
 </body>
 </html>

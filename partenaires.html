@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Devenir partenaire — Faire l'Industrie · Premier Cercle</title>
+  <meta name="description" content="Rejoignez le Premier Cercle de Faire l'Industrie : pour les PMI, par les PMI d'AURA. Mécénat défiscalisé à 60 % via la Fondation ILYSE ou sponsoring dès 1 000 €. Annonce des fondateurs le 20 octobre.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://faire-industrie.cpmerhone.fr/partenaires.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Devenir partenaire — Faire l'Industrie · Premier Cercle">
+  <meta property="og:description" content="Un projet financé par celles dont il valorise les métiers. Promesse dès 1 000 €, seuil de 15 000 €, annonce le 20 octobre à la fête des 2 ans.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="assets/fi-logo.webp">
+  <meta property="og:image:alt" content="Logo Faire l'Industrie">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Faire l'Industrie — Premier Cercle">
+  <meta name="twitter:description" content="Pour les PMI, par les PMI. Rejoignez le premier cercle de partenaires financeurs.">
+  <meta name="twitter:image" content="assets/fi-logo.webp">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/fi-logo.webp">
+
+  <!-- Preload key font -->
+  <link rel="preload" href="assets/fonts/Inter-variable.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- DNS prefetch for external links -->
+  <link rel="dns-prefetch" href="https://cal.com">
+  <link rel="dns-prefetch" href="https://liutnotes.notion.site">
+
+  <!-- Critical styles inlined for above-fold rendering -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{font-family:'Inter',sans-serif;font-size:1rem;line-height:1.6;color:#1A1A1A;background-color:#F7F5F0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img,svg{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;cursor:pointer;border:none;background:none}
+    ul,ol{list-style:none}
+    .container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:24px}
+    .section{padding-block:96px}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .25s,box-shadow .25s,padding .25s}
+    .navbar.is-scrolled{background:rgba(247,245,240,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(26,26,26,.06);padding:8px 0}
+    .navbar__inner{display:flex;align-items:center;justify-content:space-between}
+    .navbar__logo img{height:80px;width:auto;object-fit:contain;margin-block:-12px}
+    .navbar__links{display:none;align-items:center;gap:24px}
+    .navbar__toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;position:relative;z-index:201}
+    @media(min-width:768px){.navbar__logo img{height:88px;margin-block:-14px}}
+    @media(min-width:1024px){.navbar__links{display:flex}.navbar__toggle{display:none}.navbar__logo img{height:100px;margin-block:-18px}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+    h1,h2,h3{font-family:'Inter',sans-serif;font-weight:700;line-height:1.15;letter-spacing:-.03em;color:#1A1A1A}
+    h1{font-size:clamp(2.5rem,5vw,3.75rem);font-weight:800;letter-spacing:-.04em}
+  </style>
+
+  <!-- Site stylesheets (same as homepage) -->
+  <link rel="stylesheet" href="styles/fonts.min.css">
+  <link rel="stylesheet" href="styles/tokens.min.css">
+  <link rel="stylesheet" href="styles/base.min.css">
+  <link rel="stylesheet" href="styles/components.min.css">
+  <link rel="stylesheet" href="styles/sections.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="styles/sections.min.css"></noscript>
+
+  <!-- Page-scoped styles (partenaires) -->
+  <style>
+    /* Page hero */
+    .partner-hero{padding-top:calc(var(--space-10) + var(--space-8));padding-bottom:var(--space-8);text-align:center;position:relative;overflow:hidden}
+    .partner-hero__eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,159,103,.1);color:var(--color-primary);font-family:var(--font-mono);font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-widest);padding:6px 16px;border-radius:var(--radius-pill);margin-bottom:var(--space-3)}
+    .partner-hero__eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--color-accent)}
+    .partner-hero__title{max-width:900px;margin-inline:auto;margin-bottom:var(--space-3)}
+    .partner-hero__subtitle{max-width:680px;margin-inline:auto;font-size:clamp(1rem,1.5vw,1.1875rem);color:var(--color-muted);line-height:var(--leading-relaxed);margin-bottom:var(--space-4)}
+    .partner-hero__ctas{display:flex;flex-direction:column;gap:var(--space-2);align-items:center;justify-content:center;margin-bottom:var(--space-6)}
+    @media(min-width:480px){.partner-hero__ctas{flex-direction:row}}
+    @media(max-width:479px){.partner-hero__ctas .btn{width:100%;justify-content:center}}
+
+    /* 16:9 pitch video */
+    .pitch-video{position:relative;max-width:960px;margin-inline:auto;aspect-ratio:16/9;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-elevate);border:6px solid #fff;background:var(--color-primary)}
+    .pitch-video iframe,.pitch-video video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+    .pitch-video__placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-2);color:#fff;background:linear-gradient(135deg,var(--color-primary),var(--color-teal));text-align:center;padding:var(--space-4)}
+    .pitch-video__play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;transition:transform var(--duration-base) var(--ease-spring),background var(--duration-base)}
+    .pitch-video__placeholder:hover .pitch-video__play{transform:scale(1.06);background:rgba(255,255,255,.28)}
+    .pitch-video__label{font-weight:700;font-size:var(--text-p)}
+    .pitch-video__hint{font-size:var(--text-xs);color:rgba(255,255,255,.85);max-width:360px}
+    .pitch-video__caption{text-align:center;font-size:var(--text-small);color:var(--color-muted);margin-top:var(--space-2)}
+
+    /* Roadmap / pourquoi maintenant */
+    .roadmap{background:var(--color-primary);color:#fff}
+    .roadmap__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);margin-top:var(--space-2)}
+    @media(min-width:768px){.roadmap__grid{grid-template-columns:repeat(5,1fr);gap:var(--space-2)}}
+    .roadmap__item{position:relative;text-align:center;padding:var(--space-2) var(--space-1)}
+    .roadmap__date{font-family:var(--font-display);font-weight:800;font-size:1.25rem;letter-spacing:-.02em;color:#fff;margin-bottom:6px}
+    .roadmap__item--accent .roadmap__date{color:var(--color-warning)}
+    .roadmap__text{font-size:var(--text-xs);color:rgba(255,255,255,.92);line-height:1.4}
+    .roadmap__badge{display:inline-block;font-family:var(--font-mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-wider);background:var(--color-warning);color:var(--color-primary-dark);padding:2px 8px;border-radius:var(--radius-pill);margin-bottom:8px}
+
+    /* Tickets (portes d'entrée) */
+    .ticket__price{font-family:var(--font-display);font-weight:800;font-size:1.75rem;letter-spacing:-.02em;color:var(--color-primary);line-height:1}
+    .ticket__price-unit{font-size:var(--text-small);font-weight:600;color:var(--color-muted);margin-left:4px}
+    .ticket__tagline{display:inline-block;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-accent);margin-top:6px}
+
+    /* Benefits grid */
+    .benefit__num{font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;color:var(--color-primary);letter-spacing:var(--tracking-wider);margin-bottom:var(--space-1)}
+
+    /* Contacts */
+    .contacts{display:grid;grid-template-columns:1fr;gap:var(--space-2);max-width:640px;margin:var(--space-4) auto 0}
+    @media(min-width:640px){.contacts{grid-template-columns:repeat(2,1fr)}}
+    .contact-card{background:var(--color-surface);border:var(--border-1);border-radius:var(--radius-card);padding:var(--space-3);box-shadow:var(--shadow-subtle);text-align:left}
+    .contact-card__role{font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:var(--tracking-wider);color:var(--color-primary);margin-bottom:6px}
+    .contact-card__name{font-weight:700;font-size:var(--text-p);margin-bottom:2px}
+    .contact-card__detail{font-size:var(--text-small);color:var(--color-muted)}
+  </style>
+</head>
+<body>
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Faire l'Industrie — Accueil">
+        <img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="400" height="400" fetchpriority="high">
+      </a>
+
+      <div class="navbar__links">
+        <a href="index.html#pour-qui" class="navbar__link">Pour qui</a>
+        <a href="index.html#solution" class="navbar__link">Le jeu</a>
+        <a href="index.html#deploiement" class="navbar__link">Déployer</a>
+        <a href="index.html#metiers" class="navbar__link">Métiers</a>
+        <a href="partenaires.html" class="navbar__link" aria-current="page">Partenaires</a>
+        <a href="index.html#faq" class="navbar__link">FAQ</a>
+        <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary">Réserver 15 min</a>
+      </div>
+
+      <button class="navbar__toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="navbar__toggle-bar"></span>
+      </button>
+    </div>
+
+    <div class="navbar__mobile" id="mobile-menu" role="dialog" aria-label="Menu mobile">
+      <a href="index.html#pour-qui" class="navbar__link">Pour qui</a>
+      <a href="index.html#solution" class="navbar__link">Le jeu</a>
+      <a href="index.html#deploiement" class="navbar__link">Déployer</a>
+      <a href="index.html#metiers" class="navbar__link">Métiers</a>
+      <a href="partenaires.html" class="navbar__link" aria-current="page">Partenaires</a>
+      <a href="index.html#faq" class="navbar__link">FAQ</a>
+      <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Réserver 15 min</a>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN ========== -->
+  <main id="main-content">
+
+    <!-- ===== HERO + VIDÉO PITCH ===== -->
+    <section class="partner-hero" aria-labelledby="partner-title">
+      <div class="container">
+        <span class="partner-hero__eyebrow reveal"><span class="dot"></span> Premier Cercle · Saison 2026-2027</span>
+        <h1 id="partner-title" class="partner-hero__title reveal reveal--delay-1">
+          Pour les PMI, <span style="color:var(--color-accent)">par les PMI.</span>
+        </h1>
+        <p class="partner-hero__subtitle reveal reveal--delay-1">
+          Vos métiers sont déjà dans le jeu, manipulés par des familles partout en Auvergne-Rhône-Alpes. Devenez aussi celles et ceux qui le font vivre : Faire l'Industrie ouvre son premier cercle de partenaires financeurs.
+        </p>
+        <div class="partner-hero__ctas reveal reveal--delay-2">
+          <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Faire une promesse — 15 min
+          </a>
+          <a href="mailto:fliut@cpmerhone.fr" class="btn btn--secondary btn--lg">Écrire à l'équipe</a>
+        </div>
+
+        <!-- 16:9 PITCH VIDEO -->
+        <!--
+          VIDÉO PITCH ENTREPRISES : remplacez le bloc .pitch-video__placeholder par votre embed.
+          - YouTube  : <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Pitch Faire l'Industrie" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          - Vimeo    : <iframe src="https://player.vimeo.com/video/VIDEO_ID" title="Pitch Faire l'Industrie" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          - Auto-hébergé : <video controls poster="assets/pitch-poster.webp"><source src="assets/pitch-entreprises.mp4" type="video/mp4"></video>
+        -->
+        <div class="pitch-video reveal reveal--delay-2">
+          <div class="pitch-video__placeholder">
+            <span class="pitch-video__play" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span class="pitch-video__label">Le pitch pour les entreprises</span>
+            <span class="pitch-video__hint">Vidéo de présentation à intégrer ici (format 16:9). Voir le commentaire dans le code pour coller l'embed YouTube, Vimeo ou la vidéo auto-hébergée.</span>
+          </div>
+        </div>
+        <p class="pitch-video__caption reveal">2 minutes pour comprendre pourquoi rejoindre le Premier Cercle.</p>
+      </div>
+    </section>
+
+    <!-- ===== PREUVES À DATE ===== -->
+    <section class="key-numbers section--compact" aria-label="Preuves à date">
+      <div class="container">
+        <div class="key-numbers__grid">
+          <div class="key-numbers__item reveal">
+            <span class="key-numbers__value">+110</span>
+            <span class="key-numbers__label">Métiers documentés<br>et validés</span>
+          </div>
+          <div class="key-numbers__item reveal reveal--delay-1">
+            <span class="key-numbers__value">+45</span>
+            <span class="key-numbers__label">PMI déjà<br>engagées dans le jeu</span>
+          </div>
+          <div class="key-numbers__item reveal reveal--delay-2">
+            <span class="key-numbers__value">+530</span>
+            <span class="key-numbers__label">Organisations<br>cartographiées</span>
+          </div>
+          <div class="key-numbers__item reveal reveal--delay-3">
+            <span class="key-numbers__value">3</span>
+            <span class="key-numbers__label">Filières en<br>co-construction</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== POURQUOI MAINTENANT (roadmap) ===== -->
+    <section class="roadmap section" aria-labelledby="roadmap-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__overline" style="color:var(--color-warning)">Pourquoi maintenant</span>
+          <h2 id="roadmap-title" class="section-header__title text-white">L'amorçage se termine. Le relais doit être pris.</h2>
+          <p class="section-header__subtitle" style="color:rgba(255,255,255,.92)">
+            L'amorçage financé par la Fondation ILYSE se termine en novembre. Pour que le dispositif continue, le relais doit être pris maintenant — par celles et ceux qu'il sert.
+          </p>
+        </div>
+
+        <div class="roadmap__grid reveal">
+          <div class="roadmap__item">
+            <div class="roadmap__date">2024-2026</div>
+            <p class="roadmap__text">Amorçage financé par la Fondation ILYSE.</p>
+          </div>
+          <div class="roadmap__item">
+            <div class="roadmap__date">Sept. 2026</div>
+            <p class="roadmap__text">La fenêtre d'animation s'ouvre sur le territoire.</p>
+          </div>
+          <div class="roadmap__item">
+            <div class="roadmap__date">30 sept.</div>
+            <p class="roadmap__text">Premiers engagements attendus des partenaires.</p>
+          </div>
+          <div class="roadmap__item roadmap__item--accent">
+            <span class="roadmap__badge">Temps fort</span>
+            <div class="roadmap__date">20 oct.</div>
+            <p class="roadmap__text">Fête des 2 ans : annonce publique du premier cercle.</p>
+          </div>
+          <div class="roadmap__item">
+            <div class="roadmap__date">Nov. 2026</div>
+            <p class="roadmap__text">Fin de l'amorçage : le relais doit être pris.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CE QUE VOTRE SOUTIEN DÉBLOQUE ===== -->
+    <section class="pour-qui section" aria-labelledby="unlock-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__overline">Ce que votre soutien débloque</span>
+          <h2 id="unlock-title" class="section-header__title">Un modèle qui rend le jeu accessible à ceux qui le diffusent</h2>
+          <p class="section-header__subtitle">Vos participations financent la création, la diffusion et la découverte — pas une structure, un usage réel sur le terrain.</p>
+        </div>
+
+        <div class="grid grid--3 mb-8">
+          <div class="card reveal" style="--card-color: var(--color-primary)">
+            <div class="card__body">
+              <div class="card__icon" style="background: var(--color-primary)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+              </div>
+              <h3 class="card__title">Création</h3>
+              <p class="card__text">De nouvelles chaînes métiers, validées une à une avec les entreprises du territoire.</p>
+            </div>
+            <span class="card__serial">FI-C01</span>
+          </div>
+
+          <div class="card reveal reveal--delay-1" style="--card-color: var(--color-accent)">
+            <div class="card__body">
+              <div class="card__icon" style="background: var(--color-accent)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <h3 class="card__title">Diffusion</h3>
+              <p class="card__text">Un jeu accessible aux associations, animateurs et partenaires institutionnels qui le font jouer.</p>
+            </div>
+            <span class="card__serial">FI-C02</span>
+          </div>
+
+          <div class="card reveal reveal--delay-2" style="--card-color: var(--color-sky)">
+            <div class="card__body">
+              <div class="card__icon" style="background: var(--color-sky)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <h3 class="card__title">Découverte</h3>
+              <p class="card__text">Vos métiers montrés aux parents et aux jeunes, partout dans AURA, là où se joue l'orientation.</p>
+            </div>
+            <span class="card__serial">FI-C03</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TROIS PORTES D'ENTRÉE ===== -->
+    <section id="participer" class="packs section" aria-labelledby="tickets-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__overline">Comment participer</span>
+          <h2 id="tickets-title" class="section-header__title">Trois portes d'entrée, un cadre choisi ensemble</h2>
+          <p class="section-header__subtitle">On choisit la bonne voie en 15 minutes, selon votre nature et vos objectifs. Mécénat défiscalisé, prestation dédiée ou soutien PMI.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <!-- Ticket 1 — Mécénat ILYSE -->
+          <div class="card card--pack reveal" style="--card-color: var(--color-primary)">
+            <div class="card__body">
+              <p class="card--pack-overline uppercase text-muted">Mécénat via la Fondation ILYSE</p>
+              <p class="ticket__price">5 – 25 k€</p>
+              <span class="ticket__tagline">Défiscalisation de 60 %</span>
+              <div class="card__pack-desc" style="margin-top:var(--space-2)">
+                <p>Vous soutenez une démarche d'intérêt général : industrie, jeunesse, orientation, territoire.</p>
+                <ul class="card__pack-list">
+                  <li>Contreparties non commerciales</li>
+                  <li>Reporting d'impact</li>
+                  <li>Valorisation institutionnelle</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__footer">
+              <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="width:100%;justify-content:center">En discuter (15 min)</a>
+            </div>
+            <span class="card__serial">FI-PT01</span>
+          </div>
+
+          <!-- Ticket 2 — Prestation CPME -->
+          <div class="card card--pack reveal reveal--delay-1" style="--card-color: var(--color-lime)">
+            <div class="card__body">
+              <p class="card--pack-overline uppercase text-muted">Prestation / Partenaire animateur</p>
+              <p class="ticket__price">3 – 20 k€</p>
+              <span class="ticket__tagline" style="color:var(--color-primary)">Votre déclinaison dédiée</span>
+              <div class="card__pack-desc" style="margin-top:var(--space-2)">
+                <p>Vous financez une version personnalisée pour votre filière, votre groupe ou votre territoire.</p>
+                <ul class="card__pack-list">
+                  <li>Version 12 métiers × 12 entités</li>
+                  <li>Kit d'animation complet</li>
+                  <li>Formation de vos animateurs</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__footer">
+              <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn" style="width:100%;justify-content:center;background:var(--color-lime);color:var(--color-dark)">Planifier un échange</a>
+            </div>
+            <span class="card__serial">FI-PT02</span>
+          </div>
+
+          <!-- Ticket 3 — Soutien PMI (Featured) -->
+          <div class="card card--pack card--featured reveal reveal--delay-2" style="--card-color: var(--color-primary)">
+            <span class="card__badge-top">Le premier cercle</span>
+            <div class="card__body">
+              <p class="card--pack-overline uppercase text-muted">Soutien PMI · Sponsoring</p>
+              <p class="ticket__price">1 – 5 k€</p>
+              <span class="ticket__tagline">À partir de 1 000 €</span>
+              <div class="card__pack-desc" style="margin-top:var(--space-2)">
+                <p>Un soutien simple, avec contreparties de visibilité et association pleine à la démarche.</p>
+                <ul class="card__pack-list">
+                  <li>Association à la démarche</li>
+                  <li>Valorisation de vos propres métiers</li>
+                  <li>Statut de fondateur du Cercle 1</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__footer">
+              <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn" style="width:100%;justify-content:center;background:var(--color-primary);color:white">Rejoindre le Cercle 1</a>
+            </div>
+            <span class="card__serial">FI-PT03</span>
+          </div>
+        </div>
+
+        <!-- Seuil du cercle -->
+        <div class="packs__focus reveal">
+          <div>
+            <h3 class="packs__focus-title">Le premier cercle se valide à plusieurs</h3>
+            <p class="packs__focus-text" style="margin-bottom:var(--space-2)">
+              Objectif : <strong>15 000 €</strong>, réunis par <strong>5 à 8 fondateurs</strong>. Chaque promesse est conditionnelle au seuil — personne ne s'engage seul. On ne rejoint le Cercle 1 qu'une seule fois.
+            </p>
+            <p class="packs__focus-text text-small">Promesse minimale : 1 000 €. Réponse souhaitée avant le 3 octobre pour figurer parmi les fondateurs annoncés le 20 octobre.</p>
+          </div>
+          <div class="packs__focus-cta">
+            <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn" style="background:#4338CA;color:white">Faire une promesse</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CE QUE VOUS Y GAGNEZ ===== -->
+    <section class="pour-qui section" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__overline">Le Cercle 1</span>
+          <h2 id="benefits-title" class="section-header__title">Ce que vous y gagnez</h2>
+          <p class="section-header__subtitle">Une reconnaissance réservée au premier tour de table, et une visibilité qui dure dans tout le dispositif.</p>
+        </div>
+
+        <div class="grid grid--4 mb-8">
+          <div class="card reveal" style="--card-color: var(--color-accent)">
+            <div class="card__body">
+              <p class="benefit__num">01</p>
+              <h3 class="card__title">Reconnaissance publique</h3>
+              <p class="card__text">Votre nom annoncé à la fête des 2 ans le 20 octobre et sur le site du projet.</p>
+            </div>
+            <span class="card__serial">FI-B01</span>
+          </div>
+          <div class="card reveal reveal--delay-1" style="--card-color: var(--color-primary)">
+            <div class="card__body">
+              <p class="benefit__num">02</p>
+              <h3 class="card__title">Statut de fondateur</h3>
+              <p class="card__text">Réservé au premier tour de table. On ne rejoint le Cercle 1 qu'une seule fois.</p>
+            </div>
+            <span class="card__serial">FI-B02</span>
+          </div>
+          <div class="card reveal reveal--delay-2" style="--card-color: var(--color-sky)">
+            <div class="card__body">
+              <p class="benefit__num">03</p>
+              <h3 class="card__title">Visibilité durable</h3>
+              <p class="card__text">Votre logo sur tous les supports de communication et dans toutes les annonces Faire l'Industrie.</p>
+            </div>
+            <span class="card__serial">FI-B03</span>
+          </div>
+          <div class="card reveal reveal--delay-3" style="--card-color: var(--color-teal)">
+            <div class="card__body">
+              <p class="benefit__num">04</p>
+              <h3 class="card__title">Reporting d'impact</h3>
+              <p class="card__text">Le bilan des animations où vos métiers sont joués partout dans AURA.</p>
+            </div>
+            <span class="card__serial">FI-B04</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OPTION : PACK CO-CONCEPTION ===== -->
+    <section class="customization section" aria-labelledby="coconcept-title">
+      <div class="container text-center">
+        <div class="section-header reveal">
+          <span class="section-header__overline" style="color:var(--color-lime)">Option dédiée</span>
+          <h2 id="coconcept-title" class="section-header__title text-white">Pack Co-conception — votre jeu de 12 métiers</h2>
+          <p class="section-header__subtitle" style="color:rgba(255,255,255,.95)">
+            Une déclinaison locale coconstruite avec 12 entreprises de votre réseau : douze métiers réels, racontés par ceux qui les exercent. Production, formation, co-animation et première année de « Jeu Vivant » incluses.
+          </p>
+        </div>
+
+        <div class="customization__grid">
+          <div class="reveal">
+            <h3 class="customization__col-title" style="color: var(--color-lime)">Le déroulé, cinq temps</h3>
+            <ul class="customization__list">
+              <li>• <strong>Cadrage :</strong> publics, objectifs, sélection des 12 entreprises.</li>
+              <li>• <strong>Terrain :</strong> 12 entretiens métiers de 45 min, une seule fois par entreprise.</li>
+              <li>• <strong>Validation :</strong> chaque fiche relue et validée par l'entreprise.</li>
+              <li>• <strong>Production :</strong> cartes finalisées, PDF prêt à imprimer.</li>
+              <li>• <strong>Transmission :</strong> kit animateur, formation 45 min, co-animation 2 h.</li>
+            </ul>
+          </div>
+          <div class="reveal reveal--delay-1">
+            <h3 class="customization__col-title" style="color: var(--color-sky)">L'investissement</h3>
+            <ul class="customization__list">
+              <li>• <strong>3 500 € HT</strong> — pack complet, 12 chaînes métiers.</li>
+              <li>• <strong>750 € HT / an</strong> — « Jeu Vivant » dès l'année 2 (mises à jour, jusqu'à 3 nouvelles chaînes).</li>
+              <li>• <strong>300 € HT</strong> — par chaîne métier supplémentaire.</li>
+              <li>• <strong>Première année incluse :</strong> surveillance mensuelle et corrections.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="customization__cta-wrap reveal">
+          <span class="customization__cta-ring">
+            <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--lg">
+              Caler le cadrage (15 min)
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </span>
+          <p class="customization__cta-hint">Impression physique, déplacements et déploiement multi-sites : sur devis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== APRÈS VOTRE PROMESSE ===== -->
+    <section class="progression section" aria-labelledby="after-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__overline">Après votre « oui »</span>
+          <h2 id="after-title" class="section-header__title">De la promesse à l'annonce, en trois temps</h2>
+          <p class="section-header__subtitle">Sans complexité, à votre rythme, et rendu public seulement si vous le souhaitez.</p>
+        </div>
+
+        <div class="grid grid--3 stepper">
+          <div class="stepper__track"></div>
+          <div class="stepper__item reveal">
+            <div class="stepper__number" style="background: var(--color-accent)"><span>1</span></div>
+            <h3 class="stepper__title">Un échange de 15 minutes</h3>
+            <p class="stepper__text">On cadre votre contexte et le bon véhicule : mécénat défiscalisé ou sponsoring.</p>
+          </div>
+          <div class="stepper__item reveal reveal--delay-1">
+            <div class="stepper__number" style="background: var(--color-primary)"><span>2</span></div>
+            <h3 class="stepper__title">Une convention simple</h3>
+            <p class="stepper__text">Sous 15 jours, sans complexité, adaptée à la voie que vous choisissez.</p>
+          </div>
+          <div class="stepper__item reveal reveal--delay-2">
+            <div class="stepper__number" style="background: var(--color-teal)"><span>3</span></div>
+            <h3 class="stepper__title">Une annonce le 20 octobre</h3>
+            <p class="stepper__text">Votre engagement rendu public lors de la fête des 2 ans, si vous le souhaitez.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA FINAL + CONTACTS ===== -->
+    <section class="mini-kit section" aria-labelledby="cta-title">
+      <div class="container container--narrow">
+        <div class="cta-band reveal">
+          <span class="cta-band__badge">Votre place dans le Cercle 1</span>
+          <h2 id="cta-title" class="cta-band__title">Une promesse dès 1 000 €. Une réponse avant le 3 octobre.</h2>
+          <p class="cta-band__text">Mécénat défiscalisé à 60 % via la Fondation ILYSE, ou sponsoring dès 1 000 €. On choisit ensemble en 15 minutes.</p>
+          <div class="cta-band__form" style="justify-content:center">
+            <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn" style="background:#4338CA;color:white">Réserver 15 minutes</a>
+          </div>
+
+          <div class="contacts">
+            <div class="contact-card">
+              <p class="contact-card__role">Pilotage</p>
+              <p class="contact-card__name">Fabrice Liut</p>
+              <p class="contact-card__detail"><a href="mailto:fliut@cpmerhone.fr" class="link">fliut@cpmerhone.fr</a></p>
+            </div>
+            <div class="contact-card">
+              <p class="contact-card__role">Sponsoring</p>
+              <p class="contact-card__name">Frank Lebel</p>
+              <p class="contact-card__detail">Les Entrepreneurs du Rhône</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container text-center">
+      <div class="footer__brand">
+        <img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="400" height="400" loading="lazy">
+      </div>
+
+      <div class="footer__ctas">
+        <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Réserver 15 min
+        </a>
+        <a href="index.html" class="btn btn--lg" style="background:white;color:var(--color-text)">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Retour à l'accueil
+        </a>
+      </div>
+
+      <p class="footer__partners-label">Les porteurs du dispositif</p>
+      <div class="footer__partners">
+        <picture>
+          <source srcset="assets/logo 42.webp" type="image/webp">
+          <img src="assets/logo 42.jpg" alt="Logo CPME 42" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
+        </picture>
+        <picture>
+          <source srcset="assets/logo 69.webp" type="image/webp">
+          <img src="assets/logo 69.jpg" alt="Logo CPME 69" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
+        </picture>
+        <picture>
+          <source srcset="assets/logo Ilyse.webp" type="image/webp">
+          <img src="assets/logo Ilyse.jpg" alt="Logo Fondation Ilyse" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
+        </picture>
+      </div>
+
+      <div class="footer__bottom">
+        <span>&copy; <span id="year"></span> Faire l'Industrie. Tous droits réservés. CPME du Rhône, Lyon.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts (mêmes que l'accueil : navbar, menu mobile, reveal, tilt) -->
+  <script src="scripts/main.min.js" defer></script>
+</body>
+</html>

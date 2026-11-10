@@ -1,1047 +1,923 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- SEO -->
-  <title>Faire l'Industrie — Sensibilisez aux métiers industriels en 20 minutes</title>
-  <meta name="description" content="Jeu de cartes Portrait d'avenir : sensibilisez aux métiers industriels du territoire AURA en 20 minutes. +45 PMI engagées, +110 métiers documentés, +530 organisations cartographiées. Kit animateur fourni.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://faire-industrie.cpmerhone.fr/">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Faire l'Industrie — Le jeu pour briser les clichés">
-  <meta property="og:description" content="En 20 minutes, chaque groupe de joueurs compose un portrait de métier et repart avec 1 métier concret + 1 phrase pour en parler autour de soi.">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="fr_FR">
-  <meta property="og:image" content="assets/fi-logo.webp">
-  <meta property="og:image:alt" content="Logo Faire l'Industrie">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Faire l'Industrie">
-  <meta name="twitter:description" content="Le jeu pour faire découvrir le vrai visage de l'industrie.">
-  <meta name="twitter:image" content="assets/fi-logo.webp">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/webp" href="assets/fi-logo.webp">
-
-  <!-- Preload key font (only Inter, Geist Mono deferred) -->
-  <link rel="preload" href="assets/fonts/Inter-variable.woff2" as="font" type="font/woff2" crossorigin>
-
-  <!-- Preload LCP image with responsive sources -->
-  <link rel="preload" as="image" href="assets/image_de9aba.webp" type="image/webp" fetchpriority="high" imagesrcset="assets/image_de9aba-sm.webp 600w, assets/image_de9aba.webp 1024w" imagesizes="(max-width: 767px) 100vw, 50vw">
-
-  <!-- DNS prefetch for external links -->
-  <link rel="dns-prefetch" href="https://cal.com">
-  <link rel="dns-prefetch" href="https://liutnotes.notion.site">
-
-  <!-- Critical styles inlined for above-fold rendering -->
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-    body{font-family:'Inter',sans-serif;font-size:1rem;line-height:1.6;color:#1A1A1A;background-color:#F7F5F0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    img,svg{display:block;max-width:100%;height:auto}
-    a{color:inherit;text-decoration:none}
-    button{font:inherit;cursor:pointer;border:none;background:none}
-    ul,ol{list-style:none}
-    .container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:24px}
-    .section{padding-block:96px}
-    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .25s,box-shadow .25s,padding .25s}
-    .navbar.is-scrolled{background:rgba(247,245,240,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(26,26,26,.06);padding:8px 0}
-    .navbar__inner{display:flex;align-items:center;justify-content:space-between}
-    .navbar__logo img{height:80px;width:auto;object-fit:contain;margin-block:-12px}
-    .navbar__links{display:none;align-items:center;gap:24px}
-    .navbar__toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;position:relative;z-index:201}
-    @media(min-width:768px){.navbar__logo img{height:88px;margin-block:-14px}}
-    @media(min-width:1024px){.navbar__links{display:flex}.navbar__toggle{display:none}.navbar__logo img{height:100px;margin-block:-18px}}
-    .hero{position:relative;padding-top:calc(96px + 80px);padding-bottom:80px;overflow:hidden}
-    .hero__grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
-    @media(min-width:768px){.hero__grid{grid-template-columns:1fr 1fr;gap:64px}}
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
-    .reveal.is-visible{opacity:1;transform:translateY(0)}
-    h1,h2,h3{font-family:'Inter',sans-serif;font-weight:700;line-height:1.15;letter-spacing:-.03em;color:#1A1A1A}
-    h1{font-size:clamp(2.5rem,5vw,3.75rem);font-weight:800;letter-spacing:-.04em}
-  </style>
-
-  <!-- Non-critical styles loaded async -->
-  <link rel="stylesheet" href="styles/fonts.min.css">
-  <link rel="stylesheet" href="styles/tokens.min.css">
-  <link rel="stylesheet" href="styles/base.min.css">
-  <link rel="stylesheet" href="styles/components.min.css">
-  <link rel="stylesheet" href="styles/sections.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="styles/sections.min.css"></noscript>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faire l'Industrie — Sensibilisez aux métiers industriels en 20 minutes</title>
+<meta name="description" content="Jeu de cartes Portrait d'avenir : sensibilisez aux métiers industriels du territoire AURA en 20 minutes. +45 PMI engagées, +110 métiers documentés, +530 organisations cartographiées. Kit animateur fourni.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://faire-industrie.cpmerhone.fr/">
+<meta property="og:title" content="Faire l'Industrie — Le jeu pour briser les clichés">
+<meta property="og:description" content="En 20 minutes, chaque groupe de joueurs compose un portrait de métier et repart avec 1 métier concret + 1 phrase pour en parler autour de soi.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="assets/fi-logo.webp">
+<meta property="og:image:alt" content="Logo Faire l'Industrie">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Faire l'Industrie">
+<meta name="twitter:description" content="Le jeu pour faire découvrir le vrai visage de l'industrie.">
+<meta name="twitter:image" content="assets/fi-logo.webp">
+<link rel="icon" type="image/webp" href="assets/fi-logo.webp">
+<link rel="preload" href="assets/fonts/Inter-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/image_de9aba.webp" type="image/webp" fetchpriority="high" imagesrcset="assets/image_de9aba-sm.webp 600w, assets/image_de9aba.webp 1024w" imagesizes="(max-width: 767px) 100vw, 50vw">
+<link rel="dns-prefetch" href="https://cal.com">
+<link rel="dns-prefetch" href="https://liutnotes.notion.site">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;font-size:1rem;line-height:1.6;color:#1A1A1A;background-color:#F7F5F0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none}
+ul,ol{list-style:none}
+.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:24px}
+.section{padding-block:96px}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .25s,box-shadow .25s,padding .25s}
+.navbar.is-scrolled{background:rgba(247,245,240,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(26,26,26,.06);padding:8px 0}
+.navbar__inner{display:flex;align-items:center;justify-content:space-between}
+.navbar__logo img{height:80px;width:auto;object-fit:contain;margin-block:-12px}
+.navbar__links{display:none;align-items:center;gap:24px}
+.navbar__toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;position:relative;z-index:201}
+@media(min-width:768px){.navbar__logo img{height:88px;margin-block:-14px}}
+@media(min-width:1024px){.navbar__links{display:flex}.navbar__toggle{display:none}.navbar__logo img{height:100px;margin-block:-18px}}
+.hero{position:relative;padding-top:calc(96px + 80px);padding-bottom:80px;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+@media(min-width:768px){.hero__grid{grid-template-columns:1fr 1fr;gap:64px}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+h1,h2,h3{font-family:'Inter',sans-serif;font-weight:700;line-height:1.15;letter-spacing:-.03em;color:#1A1A1A}
+h1{font-size:clamp(2.5rem,5vw,3.75rem);font-weight:800;letter-spacing:-.04em}
+</style>
+<link rel="stylesheet" href="styles/fonts.min.css">
+<link rel="stylesheet" href="styles/tokens.min.css">
+<link rel="stylesheet" href="styles/base.min.css">
+<link rel="stylesheet" href="styles/components.min.css">
+<link rel="stylesheet" href="styles/sections.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="styles/sections.min.css"></noscript>
 </head>
 <body>
-  <!-- Skip link -->
-  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
-
-  <!-- ========== NAVBAR ========== -->
-  <nav class="navbar" role="navigation" aria-label="Navigation principale">
-    <div class="container navbar__inner">
-      <a href="#" class="navbar__logo" aria-label="Faire l'Industrie — Accueil">
-        <img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="400" height="400" fetchpriority="high">
-      </a>
-
-      <div class="navbar__links">
-        <a href="#pour-qui" class="navbar__link">Pour qui</a>
-        <a href="#solution" class="navbar__link">Le jeu</a>
-        <a href="#deploiement" class="navbar__link">Déployer</a>
-        <a href="#metiers" class="navbar__link">Métiers</a>
-        <a href="partenaires.html" class="navbar__link">Partenaires</a>
-        <a href="#mission" class="navbar__link">Mission</a>
-        <a href="#faq" class="navbar__link">FAQ</a>
-        <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary">Réserver une démo</a>
-      </div>
-
-      <button class="navbar__toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
-        <span class="navbar__toggle-bar"></span>
-      </button>
-    </div>
-
-    <div class="navbar__mobile" id="mobile-menu" role="dialog" aria-label="Menu mobile">
-      <a href="#pour-qui" class="navbar__link">Pour qui</a>
-      <a href="#solution" class="navbar__link">Le jeu</a>
-      <a href="#deploiement" class="navbar__link">Déployer</a>
-      <a href="#metiers" class="navbar__link">Métiers</a>
-      <a href="partenaires.html" class="navbar__link">Partenaires</a>
-      <a href="#mission" class="navbar__link">Mission</a>
-      <a href="#faq" class="navbar__link">FAQ</a>
-      <a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Recevoir le kit (PDF)</a>
-      <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Réserver une démo</a>
-    </div>
-  </nav>
-
-  <!-- ========== MAIN ========== -->
-  <main id="main-content">
-
-    <!-- ===== HERO ===== -->
-    <section class="hero section" aria-labelledby="hero-title">
-      <div class="container hero__grid">
-        <!-- Content -->
-        <div class="hero__content">
-          <h1 id="hero-title" class="hero__title reveal">
-            Montrez le <span class="hero__title-accent">Vrai Visage</span> de l'Industrie en 20&nbsp;minutes
-          </h1>
-
-          <p class="hero__subtitle reveal reveal--delay-1">
-            Un jeu de cartes pour sensibiliser aux métiers industriels du territoire&nbsp;AURA. Facile à animer, gratuit jusqu'en novembre, avec un kit animateur fourni.
-          </p>
-
-          <ul class="check-list mb-6 reveal reveal--delay-2">
-              <li class="check-list__item">
-              <span class="check-list__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </span>
-              Casse les clichés : valorisez une industrie moderne, utile et locale.
-            </li>
-            <li class="check-list__item">
-              <span class="check-list__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </span>
-              +45 PMI engagées, +110 métiers documentés : une base de données vivante et personnalisable.
-            </li>
-            <li class="check-list__item">
-              <span class="check-list__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </span>
-              Chaque participant repart avec 1&nbsp;métier concret et 1&nbsp;phrase à ramener à la maison.
-            </li>
-          </ul>
-
-          <div class="hero__ctas reveal reveal--delay-3">
-            <div>
-              <a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
-                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Recevoir le kit (PDF)
-              </a>
-              <p class="hero__cta-hint">2 minutes. Email + profil.</p>
-            </div>
-            <div>
-              <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--lg">
-                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                Réserver une démo
-              </a>
-              <p class="hero__cta-hint">15 min pour vous conseiller.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Visual -->
-        <div class="hero__visual reveal reveal--delay-2">
-          <div class="hero__image-wrapper hero__image-wrapper--animated">
-            <div class="hero__image-shadow"></div>
-            <picture>
-              <source srcset="assets/image_de9aba-sm.webp" type="image/webp" media="(max-width: 767px)">
-              <source srcset="assets/image_de9aba.webp" type="image/webp">
-              <img src="assets/image_de9aba.jpg" alt="Atelier jeu Faire l'Industrie — participants autour d'un deck de cartes" class="hero__image" width="1024" height="768" fetchpriority="high" decoding="async">
-            </picture>
-            <div class="hero__float-badge">
-              <span class="hero__float-badge-number">
-                <span class="hero__float-badge-number-big">20</span>
-                <span class="hero__float-badge-number-unit">min</span>
-              </span>
-              <span class="hero__float-badge-label">En groupe</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CHIFFRES CLÉS (bandeau Fresque-style) ===== -->
-    <section class="key-numbers section--compact" aria-label="Chiffres clés">
-      <div class="container">
-        <div class="key-numbers__grid">
-          <div class="key-numbers__item reveal">
-            <span class="key-numbers__value">+45</span>
-            <span class="key-numbers__label">PMI déjà<br>engagées</span>
-          </div>
-          <div class="key-numbers__item reveal reveal--delay-1">
-            <span class="key-numbers__value">+110</span>
-            <span class="key-numbers__label">Métiers documentés<br>et validés</span>
-          </div>
-          <div class="key-numbers__item reveal reveal--delay-2">
-            <span class="key-numbers__value">+530</span>
-            <span class="key-numbers__label">Organisations<br>cartographiées</span>
-          </div>
-          <div class="key-numbers__item reveal reveal--delay-3">
-            <span class="key-numbers__value">3</span>
-            <span class="key-numbers__label">Filières en<br>co-construction</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PROBLÈME ===== -->
-    <section class="problem section" aria-labelledby="problem-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2 id="problem-title" class="section-header__title">
-            Trop souvent, l'industrie est mal racontée.<br>
-            <span class="text-accent">Et ça coûte des vocations.</span>
-          </h2>
-        </div>
-
-        <div class="grid grid--3 mb-8">
-          <!-- Card 1 -->
-          <div class="card reveal" style="--card-color: var(--color-accent)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-accent)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10H2v6z"/></svg>
-              </div>
-              <h3 class="card__title">Image datée</h3>
-              <p class="card__text">Parents et jeunes ont une image "Zola" de l'industrie : sale, pénible, polluante.</p>
-            </div>
-            <span class="card__serial">FI-P01</span>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="card reveal reveal--delay-1" style="--card-color: var(--color-primary)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-primary)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <h3 class="card__title">Actions sans suite</h3>
-              <p class="card__text">Les forums et salons génèrent peu de déclics concrets : les familles repartent sans rien à se raconter.</p>
-            </div>
-            <span class="card__serial">FI-P02</span>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="card reveal reveal--delay-2" style="--card-color: var(--color-sky)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-sky)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <h3 class="card__title">Métiers invisibles</h3>
-              <p class="card__text">Les PMI peinent à rendre leurs métiers désirables auprès des parents, premiers prescripteurs d'orientation.</p>
-            </div>
-            <span class="card__serial">FI-P03</span>
-          </div>
-        </div>
-
-        <div class="problem__solution-box reveal">
-          <p class="problem__solution-label">La Solution</p>
-          <p class="problem__solution-text">
-            "Faire l'Industrie" est un <span class="problem__solution-highlight">jeu de cartes "Portrait d'avenir"</span> :
-            en 20 minutes, chaque groupe de joueurs compose un portrait de métier et repart avec une phrase simple pour en parler autour de soi.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== POUR QUI ===== -->
-    <section id="pour-qui" class="pour-qui section" aria-labelledby="pour-qui-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-header__overline">Pour qui ?</span>
-          <h2 id="pour-qui-title" class="section-header__title">Un outil pour tous ceux qui valorisent l'industrie</h2>
-          <p class="section-header__subtitle">Faire l'Industrie s'adresse aux organismes dont la mission est de montrer les métiers de l'industrie, de sensibiliser à ce qu'est l'industrie aujourd'hui et de valoriser l'industrie du territoire AURA.</p>
-        </div>
-
-        <div class="grid grid--3 mb-8">
-          <!-- Audience 1 -->
-          <div class="card reveal" style="--card-color: var(--color-accent)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-accent)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <h3 class="card__title">Prescripteurs &amp; Partenaires</h3>
-              <p class="card__text">Missions locales, forums emploi, salons de l'orientation, portes ouvertes. Vous animez des rencontres avec les familles ? Le jeu s'intègre directement dans vos événements.</p>
-            </div>
-            <span class="card__serial">FI-A01</span>
-          </div>
-
-          <!-- Audience 2 -->
-          <div class="card reveal reveal--delay-1" style="--card-color: var(--color-primary)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-primary)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10H2v6z"/></svg>
-              </div>
-              <h3 class="card__title">Entreprises PMI</h3>
-              <p class="card__text">Vos métiers intégrés dans le jeu, vos collaborateurs valorisés, votre marque employeur renforcée. Gratuit jusqu'en novembre pour les entreprises intégrées.</p>
-            </div>
-            <span class="card__serial">FI-A02</span>
-          </div>
-
-          <!-- Audience 3 -->
-          <div class="card reveal reveal--delay-2" style="--card-color: var(--color-sky)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-sky)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              </div>
-              <h3 class="card__title">Acteurs de l'orientation</h3>
-              <p class="card__text">Conseillers d'orientation, enseignants, accompagnateurs jeunesse. Un outil pédagogique clé en main pour ouvrir le dialogue sur les métiers industriels avec les familles.</p>
-            </div>
-            <span class="card__serial">FI-A03</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== COMPOSITION DU JEU ===== -->
-    <section id="solution" class="game-comp section" aria-labelledby="game-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-header__overline">Le jeu — Portrait d'avenir</span>
-          <h2 id="game-title" class="section-header__title">5 familles de cartes pour construire un portrait de métier</h2>
-          <p class="section-header__subtitle">Chaque groupe de joueurs part d'un profil de personne, choisit une mission qui colle, et découvre le métier-héros associé.</p>
-        </div>
-
-        <!-- 5 card types -->
-        <div class="grid grid--5 mb-8">
-          <div class="card card--type reveal" style="--card-color: var(--color-card-profil)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-card-profil)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <h3 class="card__title">① Carte Profil</h3>
-              <p class="card__text">Mini-portrait : ce qu'il/elle aime, ses soft skills, son style de travail. Point de départ humain.</p>
-            </div>
-            <span class="card__serial">FI-P</span>
-          </div>
-
-          <div class="card card--type reveal reveal--delay-1" style="--card-color: var(--color-card-mission)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-card-mission)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-              </div>
-              <h3 class="card__title">② Carte Mission</h3>
-              <p class="card__text">Le quotidien de travail en 2-3 phrases concrètes. Pivot du matching profil → métier.</p>
-            </div>
-            <span class="card__serial">FI-MI</span>
-          </div>
-
-          <div class="card card--type reveal reveal--delay-2" style="--card-color: var(--color-card-metier)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-card-metier)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </div>
-              <h3 class="card__title">③ Carte Métier-Héros</h3>
-              <p class="card__text">Le nom du poste + visuel fort. Totem mémorable à ramener à la maison.</p>
-            </div>
-            <span class="card__serial">FI-M</span>
-          </div>
-
-          <div class="card card--type reveal reveal--delay-3" style="--card-color: var(--color-card-impact)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-card-impact)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10H2v6z"/></svg>
-              </div>
-              <h3 class="card__title">④ Carte Entreprise</h3>
-              <p class="card__text">Nom, secteur, engagements. Une industrie vivante ancrée dans le territoire.</p>
-            </div>
-            <span class="card__serial">FI-E</span>
-          </div>
-
-          <div class="card card--type reveal reveal--delay-4" style="--card-color: var(--color-card-formation)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-card-formation)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              </div>
-              <h3 class="card__title">⑤ Carte Formation</h3>
-              <p class="card__text">1 à 3 chemins d'accès (CAP, Bac pro, BTS…) en langage simple et rassurant.</p>
-            </div>
-            <span class="card__serial">FI-F</span>
-          </div>
-        </div>
-
-        <!-- Examples -->
-        <div class="game-comp__examples">
-          <div class="game-comp__example reveal" style="--_example-color: var(--color-primary)">
-            <h3 class="game-comp__example-title">Exemple — Monteuse de tiny house</h3>
-            <p class="game-comp__example-quote">"Au quotidien, tu assembles les murs, poses l'isolation, installes les fenêtres pour des tiny houses prêtes à être livrées."</p>
-            <p class="game-comp__example-detail">
-              <strong>Profil :</strong> Lina — aime le travail manuel, voir vite le résultat, faire quelque chose d'utile.<br>
-              <strong>Entreprise :</strong> Hekipia — tiny houses en bois, matériaux durables.
-            </p>
-          </div>
-          <div class="game-comp__example reveal reveal--delay-1" style="--_example-color: var(--color-accent)">
-            <h3 class="game-comp__example-title">Exemple — Opérateur machine CN</h3>
-            <p class="game-comp__example-quote">"Au quotidien, tu prépares et lances des programmes sur des machines d'usinage. Tu contrôles les pièces au millimètre."</p>
-            <p class="game-comp__example-detail">
-              <strong>Profil :</strong> Yanis — aime la précision, ne supporte pas le "à peu près", à l'aise avec les machines.<br>
-              <strong>Entreprise :</strong> Eriks — pièces mécaniques, précision et fiabilité.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PROGRESSION ===== -->
-    <section id="progression" class="progression section" aria-labelledby="progression-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-header__overline">Mécanique de jeu</span>
-          <h2 id="progression-title" class="section-header__title">20 minutes, 5 étapes, 1 résultat concret</h2>
-          <p class="section-header__subtitle">Chaque participant compose un portrait de métier et repart avec quelque chose de tangible à ramener chez soi.</p>
-        </div>
-
-        <div class="grid grid--5 stepper">
-          <div class="stepper__track"></div>
-          <div class="stepper__item reveal">
-            <div class="stepper__number" style="background: var(--color-accent)"><span>1</span></div>
-            <h3 class="stepper__title">Choisir un Profil</h3>
-            <p class="stepper__text">« Imaginez que ce profil ressemble à un jeune que vous connaissez. »</p>
-          </div>
-          <div class="stepper__item reveal reveal--delay-1">
-            <div class="stepper__number" style="background: var(--color-primary)"><span>2</span></div>
-            <h3 class="stepper__title">Matcher une Mission</h3>
-            <p class="stepper__text">Lire 2-3 missions et choisir celle qui colle le mieux au profil.</p>
-          </div>
-          <div class="stepper__item reveal reveal--delay-2">
-            <div class="stepper__number" style="background: var(--color-sky)"><span>3</span></div>
-            <h3 class="stepper__title">Révéler le Métier-Héros</h3>
-            <p class="stepper__text">Retrouver la carte métier grâce au code symbole + couleur.</p>
-          </div>
-          <div class="stepper__item reveal reveal--delay-3">
-            <div class="stepper__number" style="background: var(--color-lime)"><span>4</span></div>
-            <h3 class="stepper__title">Compléter le portrait</h3>
-            <p class="stepper__text">Ajouter Entreprise + Formation pour ancrer le métier dans le réel.</p>
-          </div>
-            <div class="stepper__item reveal reveal--delay-4">
-            <div class="stepper__number" style="background: var(--color-teal)"><span>5</span></div>
-            <h3 class="stepper__title">Ramener à la maison</h3>
-            <p class="stepper__text">Construire un mini-récit : 1 métier + 1 phrase pour en parler autour de soi.</p>
-          </div>
-        </div>
-
-        <!-- Ce qu'on obtient en sortie -->
-        <div class="game-output reveal">
-          <div class="game-output__inner">
-            <h3 class="game-output__title">Ce qu'on obtient en sortie d'une partie</h3>
-            <div class="game-output__grid">
-              <div class="game-output__item">
-                <span class="game-output__icon">🎴</span>
-                <p><strong>1 portrait de métier complet</strong> — profil, mission, métier, entreprise, formation : une chaîne de cartes assemblée par le participant.</p>
-              </div>
-              <div class="game-output__item">
-                <span class="game-output__icon">💬</span>
-                <p><strong>1 phrase à ramener à la maison</strong> — « Ce soir, je te parlerai du métier de [X]. C'est un travail où on [Y], dans une entreprise qui [Z]. »</p>
-              </div>
-              <div class="game-output__item">
-                <span class="game-output__icon">🔗</span>
-                <p><strong>1 lien concret avec le territoire</strong> — une entreprise réelle, locale, qui recrute. Pas une fiche abstraite.</p>
-              </div>
-              <div class="game-output__item">
-                <span class="game-output__icon">🧠</span>
-                <p><strong>1 déclic sur l'industrie</strong> — les clichés tombent, les participants découvrent une industrie moderne, humaine et technologique.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== DEPLOIEMENT ===== -->
-    <section id="deploiement" class="deploiement section" aria-labelledby="deploiement-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-header__overline">Déploiement</span>
-          <h2 id="deploiement-title" class="section-header__title">Facile à animer, facile à déployer</h2>
-          <p class="section-header__subtitle">Comme une Fresque, le jeu est conçu pour être transmis simplement. Formation rapide, kit animateur fourni, et c'est parti.</p>
-        </div>
-
-        <div class="grid grid--3 mb-8">
-          <div class="card reveal" style="--card-color: var(--color-primary)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-primary)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              </div>
-              <h3 class="card__title">Formation rapide</h3>
-              <p class="card__text">Pas besoin d'être expert de l'industrie. Une prise en main courte suffit pour animer votre première session en toute confiance.</p>
-            </div>
-            <span class="card__serial">FI-D01</span>
-          </div>
-
-          <div class="card reveal reveal--delay-1" style="--card-color: var(--color-accent)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-accent)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              </div>
-              <h3 class="card__title">Kit animateur fourni</h3>
-              <p class="card__text">Cartes imprimables, guide d'animation, script oral, fiches « phrase à ramener à la maison ». Tout est prêt, vous n'avez plus qu'à jouer.</p>
-            </div>
-            <span class="card__serial">FI-D02</span>
-          </div>
-
-          <div class="card reveal reveal--delay-2" style="--card-color: var(--color-sky)">
-            <div class="card__body">
-              <div class="card__icon" style="background: var(--color-sky)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <h3 class="card__title">Créateur de lien</h3>
-              <p class="card__text">Le format favorise les rencontres, les échanges et les interactions. 8–12 joueurs autour d'un même jeu, ça crée du lien naturellement.</p>
-            </div>
-            <span class="card__serial">FI-D03</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FORMATS ===== -->
-    <section class="formats section" aria-labelledby="formats-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-header__overline">Formats</span>
-          <h2 id="formats-title" class="section-header__title">Adaptable à vos contraintes</h2>
-          <p class="section-header__subtitle">8–12 joueurs + 1 animateur·rice. Insérable dans un parcours plus large.</p>
-        </div>
-
-        <div class="grid grid--3">
-          <div class="format-card reveal">
-            <span class="format-card__time">20 min</span>
-            <h3 class="format-card__title">Session Standard</h3>
-            <p class="format-card__desc">3' d'explication, 12-14' de jeu, 3-5' de debrief. Chaque participant repart avec 1 métier + 1 phrase.</p>
-          </div>
-          <div class="format-card reveal reveal--delay-1">
-            <span class="format-card__time">10 min</span>
-            <h3 class="format-card__title">Mode Light</h3>
-            <p class="format-card__desc">PROFIL + MISSION + MÉTIER uniquement. Entreprise &amp; Formation portées à l'oral par l'animateur.</p>
-          </div>
-          <div class="format-card reveal reveal--delay-2">
-            <span class="format-card__time">½ journée</span>
-            <h3 class="format-card__title">Immersion</h3>
-            <p class="format-card__desc">Session jeu + visite d'entreprise + debrief approfondi. Idéal pour les portes ouvertes.</p>
-          </div>
-        </div>
-
-        <p class="formats__link">
-          <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="link text-small">
-            Je ne sais pas quel format choisir → Réserver une démo 15 min
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== PACKS ===== -->
-    <section id="packs" class="packs section" aria-labelledby="packs-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-header__overline">Accès</span>
-          <h2 id="packs-title" class="section-header__title">Gratuit jusqu'en novembre pour tout le monde</h2>
-          <p class="section-header__subtitle">Le jeu est actuellement en accès libre, y compris pour les entreprises PMI qui y sont intégrées. Profitez-en pour tester, animer, et voir les résultats.</p>
-        </div>
-
-        <div class="grid grid--3">
-          <!-- Pack 1 -->
-          <div class="card card--pack reveal" style="--card-color: var(--color-accent)">
-            <div class="card__body">
-              <p class="card--pack-overline uppercase text-muted">Pack 1 (Principal)</p>
-              <h3 class="card__pack-title" style="font-size:1.375rem;font-weight:700;margin-bottom:var(--space-2)">Partenaire / Prescripteur</h3>
-              <div class="card__pack-desc" style="font-size:var(--text-small);color:var(--color-muted);line-height:var(--leading-normal);flex:1">
-                <p style="margin-bottom:var(--space-2)"><strong style="color:var(--color-text)">Pour :</strong> Organismes en contact avec les familles (forums emploi, salons, portes ouvertes, missions locales).</p>
-                <p style="margin-bottom:var(--space-1)"><strong style="color:var(--color-text)">Valeur :</strong> Un jeu de cartes clé en main pour animer une session de 20 min avec 8-12 participants.</p>
-                <ul class="card__pack-list">
-                  <li>10-12 métiers avec cartes complètes (Profil, Mission, Métier, Entreprise, Formation)</li>
-                  <li>Guide animateur + script oral</li>
-                  <li>Mini-fiches « phrase à ramener à la maison »</li>
-                </ul>
-                <p><strong style="color:var(--color-text)">Idéal pour :</strong> forums, classes, entretiens jeunes/familles.</p>
-              </div>
-            </div>
-            <div class="card__footer">
-              <a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="width:100%;justify-content:center">Recevoir le kit animateur</a>
-            </div>
-            <span class="card__serial">FI-PK01</span>
-          </div>
-
-          <!-- Pack 2 -->
-          <div class="card card--pack reveal reveal--delay-1" style="--card-color: var(--color-lime)">
-            <div class="card__body">
-              <p class="card--pack-overline uppercase text-muted">Pack 2</p>
-              <h3 style="font-size:1.375rem;font-weight:700;margin-bottom:var(--space-2)">Grandes Entreprises / Filières</h3>
-              <div class="card__pack-desc" style="font-size:var(--text-small);color:var(--color-muted);line-height:var(--leading-normal);flex:1">
-                <p style="margin-bottom:var(--space-2)"><strong style="color:var(--color-text)">Pour :</strong> Grands groupes, filières industrielles, réseaux d'entreprises (animations, portes ouvertes, actions collectives).</p>
-                <p style="margin-bottom:var(--space-1)"><strong style="color:var(--color-text)">Valeur :</strong> Valoriser vos PMI et les métiers industriels (filières, sous-traitants) auprès des jeunes et familles du territoire.</p>
-                <ul class="card__pack-list">
-                  <li>Kit de déploiement multi-sites</li>
-                  <li>Adaptation au contexte et aux métiers de la filière</li>
-                  <li>Accompagnement à la mise en place</li>
-                </ul>
-                <p><strong style="color:var(--color-text)">Idéal pour :</strong> Semaine de l'industrie, événements filière, portes ouvertes multi-sites.</p>
-              </div>
-            </div>
-            <div class="card__footer">
-              <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn" style="width:100%;justify-content:center;background:var(--color-lime);color:var(--color-dark)">Planifier un échange</a>
-            </div>
-            <span class="card__serial">FI-PK02</span>
-          </div>
-
-          <!-- Pack 3 — Featured -->
-          <div class="card card--pack card--featured reveal reveal--delay-2" style="--card-color: var(--color-primary)">
-            <span class="card__badge-top">Gratuit jusqu'en novembre</span>
-            <div class="card__body">
-              <p class="card--pack-overline uppercase text-muted">Pack 3</p>
-              <h3 style="font-size:1.375rem;font-weight:700;margin-bottom:var(--space-2)">Entreprise (PMI) — Intégration Métier</h3>
-              <div style="font-size:var(--text-small);color:var(--color-muted);line-height:var(--leading-normal);flex:1">
-                <p style="margin-bottom:var(--space-2);font-weight:700;color:var(--color-primary)">Transformez votre réalité en atout marque employeur sans effort.</p>
-                <div style="background:rgba(0,159,103,0.06);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);margin-bottom:var(--space-2);font-size:var(--text-xs)">
-                  <strong style="color:var(--color-text)">Mise en œuvre : 45min chrono</strong> avec le chargé de projet CPME pour créer vos cartes métiers personnalisées.
-                </div>
-                <p style="margin-bottom:var(--space-1)"><strong style="color:var(--color-text)">Bénéfices :</strong></p>
-                <ul class="card__pack-list">
-                  <li>Vos métiers intégrés dans la bibliothèque du jeu</li>
-                  <li>Valorisation de vos collaborateurs via les cartes Profil</li>
-                  <li>Visibilité auprès des parents et jeunes du territoire</li>
-                </ul>
-              </div>
-            </div>
-            <div class="card__footer">
-              <a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn" style="width:100%;justify-content:center;background:var(--color-primary);color:white">Rejoindre le jeu</a>
-            </div>
-            <span class="card__serial">FI-PK03</span>
-          </div>
-        </div>
-
-        <!-- Focus parents -->
-        <div class="packs__focus reveal">
-          <div>
-            <h3 class="packs__focus-title">Focus : Parents, familles et personnes en reconversion</h3>
-            <p class="packs__focus-text" style="margin-bottom:var(--space-2)">
-              Le jeu est pensé pour les <strong>parents et familles</strong>, mais aussi pour <strong>les personnes en reconversion</strong> ou éloignées de l'industrie : en 20 minutes, ils composent un portrait de métier et repartent avec <strong>1 métier concret + 1 phrase simple</strong> pour en parler autour de soi.
-            </p>
-            <p class="packs__focus-text text-small">« Ce soir, je te parlerai du métier de [nom du métier] » ou « Je pourrai en parler à mon réseau » selon votre public.</p>
-          </div>
-          <div class="packs__focus-cta">
-            <a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn" style="background:#4338CA;color:white">Recevoir le kit (PDF)</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== EN SYNERGIE ===== -->
-    <section class="synergie section" aria-labelledby="synergie-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-header__overline">Synergie</span>
-          <h2 id="synergie-title" class="section-header__title">Un outil qui s'intègre dans vos actions existantes</h2>
-          <p class="section-header__subtitle">Le jeu est utile seul, mais il décuple son impact en synergie avec vos autres dispositifs de sensibilisation et d'orientation.</p>
-        </div>
-
-        <div class="synergie__grid reveal">
-          <div class="synergie__item">
-            <span class="synergie__icon">🏭</span>
-            <h3>Visites d'entreprises</h3>
-            <p>Avant ou après une visite, le jeu ancre les découvertes et donne un vocabulaire commun.</p>
-          </div>
-          <div class="synergie__item">
-            <span class="synergie__icon">🧭</span>
-            <h3>RDV d'orientation</h3>
-            <p>Support ludique pour les entretiens individuels ou collectifs avec les familles.</p>
-          </div>
-          <div class="synergie__item">
-            <span class="synergie__icon">🎪</span>
-            <h3>Forums &amp; salons de l'emploi</h3>
-            <p>Animation de stand qui crée du flux et de l'engagement, au lieu du simple tract.</p>
-          </div>
-          <div class="synergie__item">
-            <span class="synergie__icon">🚪</span>
-            <h3>Portes ouvertes</h3>
-            <p>Format court idéal pour les journées multi-activités où le temps est limité.</p>
-          </div>
-          <div class="synergie__item">
-            <span class="synergie__icon">🎓</span>
-            <h3>Ateliers scolaires</h3>
-            <p>Utilisable en classe pour découvrir l'industrie locale de manière interactive.</p>
-          </div>
-          <div class="synergie__item">
-            <span class="synergie__icon">🤝</span>
-            <h3>Événements territoire</h3>
-            <p>Semaine de l'industrie, journées orientation, événements partenaires AURA.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PERSONNALISATION ===== -->
-    <section class="customization section" aria-labelledby="custom-title">
-      <div class="container text-center">
-        <div class="section-header reveal">
-          <h2 id="custom-title" class="section-header__title text-white">Un jeu personnalisable, construit sur une base de données vivante</h2>
-          <p class="section-header__subtitle" style="color:rgba(255,255,255,0.95)">Le catalogue est construit grâce à une base de données complète et mise à jour par la CPME Rhône et Loire. Nous pouvons aussi ajouter ensemble les entreprises et métiers de vos réseaux.</p>
-        </div>
-
-        <div class="customization__grid">
-          <div class="reveal">
-            <h3 class="customization__col-title" style="color: var(--color-lime)">Ce qui peut être personnalisé</h3>
-            <ul class="customization__list">
-              <li>• <strong>Entreprises PMI :</strong> Intégrez vos entreprises et celles de vos réseaux dans le jeu.</li>
-              <li>• <strong>Métiers :</strong> Sélection adaptée à votre territoire, vos filières, vos besoins en recrutement.</li>
-              <li>• <strong>Parcours :</strong> Personnalisez les chemins de formation et les profils selon vos publics.</li>
-              <li>• <strong>Missions :</strong> Rédigées à partir du quotidien réel de vos collaborateurs.</li>
-            </ul>
-          </div>
-          <div class="reveal reveal--delay-1">
-            <h3 class="customization__col-title" style="color: var(--color-sky)">La base de données</h3>
-            <ul class="customization__list">
-              <li>• <strong>+45 PMI engagées</strong> et <strong>+110 métiers</strong> documentés et validés.</li>
-              <li>• <strong>+530 organisations</strong> cartographiées et mises à jour en continu.</li>
-              <li>• <strong>Extensible :</strong> nous pouvons ensemble ajouter les entreprises et métiers de votre choix.</li>
-              <li>• <strong>Qualité :</strong> chaque fiche est validée avec l'entreprise et le chargé de projet.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="customization__cta-wrap reveal">
-          <span class="customization__cta-ring">
-            <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--lg">
-              Personnaliser le jeu pour votre contexte (15 min)
-              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-          </span>
-          <p class="customization__cta-hint">On part de vos objectifs, on propose une adaptation simple.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== TÉMOIGNAGES ===== -->
-    <section class="testimonials section" aria-labelledby="testimonials-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2 id="testimonials-title" class="section-header__title">Ils ont vu des déclics.<br>Et ils en parlent mieux que nous.</h2>
-        </div>
-
-        <div class="grid grid--3">
-            <div class="card card--testimonial reveal" style="--card-color: var(--color-accent)">
-            <div class="card__body">
-              <div class="card__stars" aria-label="5 étoiles sur 5">★★★★★</div>
-              <p class="card__quote">"Avant, les parents pensaient que l'usine c'est Charlie Chaplin. Après 20 minutes avec les cartes, ils repartent avec un métier précis et une phrase pour en parler autour d'eux."</p>
-              <p class="card__author">Animatrice Forum Emploi</p>
-              <p class="card__role">Utilisatrice Pack Partenaire</p>
-            </div>
-            <span class="card__serial">FI-T01</span>
-          </div>
-
-          <div class="card card--testimonial reveal reveal--delay-1" style="--card-color: var(--color-primary)">
-            <div class="card__body">
-              <div class="card__stars" aria-label="5 étoiles sur 5">★★★★★</div>
-              <p class="card__quote">"Ce que j'ai préféré, c'est voir des personnes en reconversion découvrir que nos métiers sont hyper technologiques. En 20 minutes, elles avaient compris ce qu'on fait et pouvaient envisager une voie professionnelle concrète."</p>
-              <p class="card__author">DRH Industrie Mécanique</p>
-              <p class="card__role">Utilisatrice Pack Entreprise</p>
-            </div>
-            <span class="card__serial">FI-T02</span>
-          </div>
-
-          <div class="card card--testimonial reveal reveal--delay-2" style="--card-color: var(--color-teal)">
-            <div class="card__body">
-              <div class="card__stars" aria-label="5 étoiles sur 5">★★★★★</div>
-              <p class="card__quote">"Le matching profil-mission fonctionne très bien. Les participants se prennent au jeu, ils cherchent la bonne carte métier avec les codes couleur. C'est simple et ça crée du lien."</p>
-              <p class="card__author">Chargée de mission Emploi</p>
-              <p class="card__role">Partenaire Territoire</p>
-            </div>
-            <span class="card__serial">FI-T03</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== MINI-KIT (lead magnet) ===== -->
-    <section class="mini-kit section" aria-labelledby="minikit-title">
-      <div class="container container--narrow">
-        <div class="cta-band reveal">
-          <span class="cta-band__badge">Cadeau</span>
-          <h2 id="minikit-title" class="cta-band__title">Mini-kit offert : découvrez la mécanique "Portrait d'avenir"</h2>
-          <p class="cta-band__text">Un PDF avec 3 exemples de chaînes de cartes complètes (Profil → Mission → Métier → Entreprise → Formation) + le script animateur pour animer une session de 20 min.</p>
-          <div class="cta-band__form" style="justify-content:center">
-            <a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn" style="background:#4338CA;color:white">
-              Recevoir le mini-kit
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FAQ ===== -->
-    <section id="faq" class="faq section" aria-labelledby="faq-title">
-      <div class="container container--narrow">
-        <div class="section-header reveal">
-          <h2 id="faq-title" class="section-header__title">Questions Fréquentes</h2>
-        </div>
-
-        <div class="accordion" role="list">
-          <div class="accordion__item" role="listitem">
-            <button class="accordion__trigger" aria-expanded="false">
-              <span>À qui s'adresse Faire l'Industrie ?</span>
-              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion__panel" aria-hidden="true">
-              <div class="accordion__content">
-                Aux parents et adultes prescripteurs (famille, référents, accompagnateurs) lors de forums emploi, salons, portes ouvertes. Aussi aux partenaires qui animent ces événements et aux entreprises (PMI) qui veulent valoriser leurs métiers.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item" role="listitem">
-            <button class="accordion__trigger" aria-expanded="false">
-              <span>Combien de temps faut-il pour animer ?</span>
-              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion__panel" aria-hidden="true">
-              <div class="accordion__content">
-                Une session standard dure 20 minutes : 3 min d'explication des règles, 12-14 min de jeu, 3-5 min de debrief. Le Mode Light est encore plus court (10 min). Possible en 1/2 journée avec visite d'entreprise.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item" role="listitem">
-            <button class="accordion__trigger" aria-expanded="false">
-              <span>Est-ce adapté à un public hétérogène ?</span>
-              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion__panel" aria-hidden="true">
-              <div class="accordion__content">
-                Oui, le jeu est pensé pour un public peu familier de l'industrie. Les cartes sont visuelles, lisibles en moins de 20 secondes, et l'animateur reformule en langage courant.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item" role="listitem">
-            <button class="accordion__trigger" aria-expanded="false">
-              <span>En quoi est-ce différent d'une visite classique ?</span>
-              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion__panel" aria-hidden="true">
-              <div class="accordion__content">
-                C'est actif. Les participants ne font pas que regarder : ils choisissent un profil, matchent une mission, découvrent un métier-héros et construisent un récit à ramener à la maison.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item" role="listitem">
-            <button class="accordion__trigger" aria-expanded="false">
-              <span>Comment obtenir le jeu / le kit ?</span>
-              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion__panel" aria-hidden="true">
-              <div class="accordion__content">
-                Téléchargez le kit de présentation via le bouton ci-dessous, tout y est expliqué. Le kit contient le guide animateur, le script oral et les cartes.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item" role="listitem">
-            <button class="accordion__trigger" aria-expanded="false">
-              <span>Faut-il être expert de l'industrie pour animer ?</span>
-              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion__panel" aria-hidden="true">
-              <div class="accordion__content">
-                Non. Le jeu est conçu pour être facile à animer avec une formation rapide. Le kit animateur fourni comprend tout le nécessaire : script oral, règles visuelles, et fiches de débrief.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item" role="listitem">
-            <button class="accordion__trigger" aria-expanded="false">
-              <span>D'où viennent les données des cartes ?</span>
-              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion__panel" aria-hidden="true">
-              <div class="accordion__content">
-                Le jeu est construit grâce à une base de données complète (+45 PMI engagées, +110 métiers documentés, +530 organisations cartographiées) mise à jour en continu par la CPME Rhône et Loire. Vous pouvez également ajouter ensemble les entreprises et métiers de vos réseaux.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item" role="listitem">
-            <button class="accordion__trigger" aria-expanded="false">
-              <span>Est-ce que c'est payant ?</span>
-              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion__panel" aria-hidden="true">
-              <div class="accordion__content">
-                Jusqu'à novembre, le jeu est <strong>gratuit pour tout le monde</strong>, y compris pour les entreprises qui y sont intégrées. Profitez-en pour tester et déployer sans engagement.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item" role="listitem">
-            <button class="accordion__trigger" aria-expanded="false">
-              <span>Peut-on utiliser le jeu en complément d'autres actions ?</span>
-              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion__panel" aria-hidden="true">
-              <div class="accordion__content">
-                Absolument. Le jeu est un outil en synergie avec vos autres actions : visites d'entreprises, RDV d'orientation, forums, salons de l'emploi, portes ouvertes. Il s'insère facilement dans un parcours plus large.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion__item" role="listitem">
-            <button class="accordion__trigger" aria-expanded="false">
-              <span>Peut-on adapter le jeu à nos métiers ?</span>
-              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion__panel" aria-hidden="true">
-              <div class="accordion__content">
-                Absolument. Le jeu fonctionne comme une <strong>bibliothèque extensible de chaînes de cartes métiers</strong>. Nous créons vos cartes personnalisées (PROFIL, MISSION, MÉTIER, ENTREPRISE, FORMATION) à partir de vos métiers réels et verbatims.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== MÉTIERS DE LA RÉGION ===== -->
-    <section id="metiers" class="catalogue section" aria-labelledby="metiers-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-header__overline">Métiers</span>
-          <h2 id="metiers-title" class="section-header__title">Les Métiers de la Région</h2>
-          <p class="section-header__subtitle">Un extrait des métiers du catalogue complet qui compte à date <strong>+45 PMI engagées</strong>, <strong>+110 métiers documentés</strong> et <strong>+530 organisations cartographiées</strong>. Base de données mise à jour en continu par la CPME Rhône et Loire.</p>
-        </div>
-
-        <div class="grid grid--3" id="jobs-grid">
-          <!-- Job cards are injected by JS for maintainability -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== MISSION DU PROJET ===== -->
-    <section id="mission" class="impact section" aria-labelledby="impact-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2 id="impact-title" class="section-header__title text-white">La mission du projet</h2>
-          <p class="section-header__subtitle" style="color: var(--color-sky)">Pour quoi nous agissons ensemble</p>
-        </div>
-
-        <div class="grid grid--4 stepper">
-          <div class="stepper__track"></div>
-
-          <div class="stepper__item reveal">
-            <div class="stepper__number"><span>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </span></div>
-            <h3 class="stepper__title">1. Intégration</h3>
-            <p class="stepper__text">Intégration en 45min chrono des métiers de vos PMI : les cartes sont créées avec le chargé du projet CPME.</p>
-          </div>
-
-          <div class="stepper__item reveal reveal--delay-1">
-            <div class="stepper__number"><span>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </span></div>
-            <h3 class="stepper__title">2. Diffusion</h3>
-            <p class="stepper__text">Animations par nos partenaires là où sont les parents : forums emploi, salons, portes ouvertes, événements territoire.</p>
-          </div>
-
-          <div class="stepper__item reveal reveal--delay-2">
-            <div class="stepper__number"><span>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-            </span></div>
-            <h3 class="stepper__title">3. Inspiration</h3>
-            <p class="stepper__text">Les parents jouent, découvrent les métiers et repartent avec 1 métier + 1 phrase pour ouvrir le dialogue à la maison.</p>
-          </div>
-
-          <div class="stepper__item reveal reveal--delay-3">
-            <div class="stepper__number"><span>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </span></div>
-            <h3 class="stepper__title">4. Transformation</h3>
-            <p class="stepper__text">Les clichés tombent, l'image de l'industrie change et les jeunes découvrent des métiers qu'ils n'auraient jamais imaginés.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer" role="contentinfo">
-    <div class="container text-center">
-      <div class="footer__brand">
-        <img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="400" height="400" loading="lazy">
-      </div>
-
-      <div class="footer__ctas">
-        <a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
-          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Recevoir le kit (PDF)
-        </a>
-        <a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--lg" style="background:white;color:var(--color-text)">
-          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Réserver une démo
-        </a>
-      </div>
-
-      <p class="footer__partners-label">Les porteurs du dispositif</p>
-      <div class="footer__partners">
-        <picture>
-          <source srcset="assets/logo 42.webp" type="image/webp">
-          <img src="assets/logo 42.jpg" alt="Logo CPME 42" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
-        </picture>
-        <picture>
-          <source srcset="assets/logo 69.webp" type="image/webp">
-          <img src="assets/logo 69.jpg" alt="Logo CPME 69" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
-        </picture>
-        <picture>
-          <source srcset="assets/logo Ilyse.webp" type="image/webp">
-          <img src="assets/logo Ilyse.jpg" alt="Logo Fondation Ilyse" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
-        </picture>
-      </div>
-
-      <div class="footer__bottom">
-        <span>&copy; <span id="year"></span> Faire l'Industrie. Tous droits réservés. CPME du Rhône, Lyon.</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="scripts/main.min.js" defer></script>
-
-  <!-- Preconnect for external CTAs (triggered on user interaction) -->
-  <script>
-    // Lazy-load Geist Mono font (only used for small labels)
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      var gm = document.createElement('link');
-      gm.rel = 'preload';
-      gm.as = 'font';
-      gm.type = 'font/woff2';
-      gm.crossOrigin = 'anonymous';
-      gm.href = 'assets/fonts/GeistMono-variable.woff2';
-      document.head.appendChild(gm);
-    }
-  </script>
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<nav class="navbar" role="navigation" aria-label="Navigation principale">
+<div class="container navbar__inner">
+<a href="#" class="navbar__logo" aria-label="Faire l'Industrie — Accueil">
+<img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="400" height="400" fetchpriority="high">
+</a>
+<div class="navbar__links">
+<a href="#pour-qui" class="navbar__link">Pour qui</a>
+<a href="#solution" class="navbar__link">Le jeu</a>
+<a href="#deploiement" class="navbar__link">Déployer</a>
+<a href="#metiers" class="navbar__link">Métiers</a>
+<a href="partenaires.html" class="navbar__link">Partenaires</a>
+<a href="#mission" class="navbar__link">Mission</a>
+<a href="#faq" class="navbar__link">FAQ</a>
+<a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary">Réserver une démo</a>
+</div>
+<button class="navbar__toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+<span class="navbar__toggle-bar"></span>
+</button>
+</div>
+<div class="navbar__mobile" id="mobile-menu" role="dialog" aria-label="Menu mobile">
+<a href="#pour-qui" class="navbar__link">Pour qui</a>
+<a href="#solution" class="navbar__link">Le jeu</a>
+<a href="#deploiement" class="navbar__link">Déployer</a>
+<a href="#metiers" class="navbar__link">Métiers</a>
+<a href="partenaires.html" class="navbar__link">Partenaires</a>
+<a href="#mission" class="navbar__link">Mission</a>
+<a href="#faq" class="navbar__link">FAQ</a>
+<a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Recevoir le kit (PDF)</a>
+<a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Réserver une démo</a>
+</div>
+</nav>
+<main id="main-content">
+<section class="hero section" aria-labelledby="hero-title">
+<div class="container hero__grid">
+<div class="hero__content">
+<h1 id="hero-title" class="hero__title reveal">
+Montrez le <span class="hero__title-accent">Vrai Visage</span> de l'Industrie en 20&nbsp;minutes
+</h1>
+<p class="hero__subtitle reveal reveal--delay-1">
+Un jeu de cartes pour sensibiliser aux métiers industriels du territoire&nbsp;AURA. Facile à animer, avec un kit autonome ou une version accompagnée et personnalisée selon vos besoins.
+</p>
+<ul class="check-list mb-6 reveal reveal--delay-2">
+<li class="check-list__item">
+<span class="check-list__icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+</span>
+Casse les clichés : valorisez une industrie moderne, utile et locale.
+</li>
+<li class="check-list__item">
+<span class="check-list__icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+</span>
++45 PMI engagées, +110 métiers documentés : une base de données vivante et personnalisable.
+</li>
+<li class="check-list__item">
+<span class="check-list__icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+</span>
+Chaque participant repart avec 1&nbsp;métier concret et 1&nbsp;phrase à ramener à la maison.
+</li>
+</ul>
+<div class="hero__ctas reveal reveal--delay-3">
+<div>
+<a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
+<svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+Recevoir le kit (PDF)
+</a>
+<p class="hero__cta-hint">2 minutes. Email + profil.</p>
+</div>
+<div>
+<a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--lg">
+<svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+Réserver une démo
+</a>
+<p class="hero__cta-hint">15 min pour vous conseiller.</p>
+</div>
+</div>
+</div>
+<div class="hero__visual reveal reveal--delay-2">
+<div class="hero__image-wrapper hero__image-wrapper--animated">
+<div class="hero__image-shadow"></div>
+<picture>
+<source srcset="assets/image_de9aba-sm.webp" type="image/webp" media="(max-width: 767px)">
+<source srcset="assets/image_de9aba.webp" type="image/webp">
+<img src="assets/image_de9aba.jpg" alt="Atelier jeu Faire l'Industrie — participants autour d'un deck de cartes" class="hero__image" width="1024" height="768" fetchpriority="high" decoding="async">
+</picture>
+<div class="hero__float-badge">
+<span class="hero__float-badge-number">
+<span class="hero__float-badge-number-big">20</span>
+<span class="hero__float-badge-number-unit">min</span>
+</span>
+<span class="hero__float-badge-label">En groupe</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="key-numbers section--compact" aria-label="Chiffres clés">
+<div class="container">
+<div class="key-numbers__grid">
+<div class="key-numbers__item reveal">
+<span class="key-numbers__value">+45</span>
+<span class="key-numbers__label">PMI déjà<br>engagées</span>
+</div>
+<div class="key-numbers__item reveal reveal--delay-1">
+<span class="key-numbers__value">+110</span>
+<span class="key-numbers__label">Métiers documentés<br>et validés</span>
+</div>
+<div class="key-numbers__item reveal reveal--delay-2">
+<span class="key-numbers__value">+530</span>
+<span class="key-numbers__label">Organisations<br>cartographiées</span>
+</div>
+<div class="key-numbers__item reveal reveal--delay-3">
+<span class="key-numbers__value">3</span>
+<span class="key-numbers__label">Filières en<br>co-construction</span>
+</div>
+</div>
+</div>
+</section>
+<section class="problem section" aria-labelledby="problem-title">
+<div class="container">
+<div class="section-header reveal">
+<h2 id="problem-title" class="section-header__title">
+Trop souvent, l'industrie est mal racontée.<br>
+<span class="text-accent">Et ça coûte des vocations.</span>
+</h2>
+</div>
+<div class="grid grid--3 mb-8">
+<div class="card reveal" style="--card-color: var(--color-accent)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-accent)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10H2v6z"/></svg>
+</div>
+<h3 class="card__title">Image datée</h3>
+<p class="card__text">Parents et jeunes ont une image "Zola" de l'industrie : sale, pénible, polluante.</p>
+</div>
+<span class="card__serial">FI-P01</span>
+</div>
+<div class="card reveal reveal--delay-1" style="--card-color: var(--color-primary)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-primary)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+</div>
+<h3 class="card__title">Actions sans suite</h3>
+<p class="card__text">Les forums et salons génèrent peu de déclics concrets : les familles repartent sans rien à se raconter.</p>
+</div>
+<span class="card__serial">FI-P02</span>
+</div>
+<div class="card reveal reveal--delay-2" style="--card-color: var(--color-sky)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-sky)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+<h3 class="card__title">Métiers invisibles</h3>
+<p class="card__text">Les PMI peinent à rendre leurs métiers désirables auprès des parents, premiers prescripteurs d'orientation.</p>
+</div>
+<span class="card__serial">FI-P03</span>
+</div>
+</div>
+<div class="problem__solution-box reveal">
+<p class="problem__solution-label">La Solution</p>
+<p class="problem__solution-text">
+"Faire l'Industrie" est un <span class="problem__solution-highlight">jeu de cartes "Portrait d'avenir"</span> :
+en 20 minutes, chaque groupe de joueurs compose un portrait de métier et repart avec une phrase simple pour en parler autour de soi.
+</p>
+</div>
+</div>
+</section>
+<section id="pour-qui" class="pour-qui section" aria-labelledby="pour-qui-title">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-header__overline">Pour qui ?</span>
+<h2 id="pour-qui-title" class="section-header__title">Un outil pour tous ceux qui valorisent l'industrie</h2>
+<p class="section-header__subtitle">Faire l'Industrie s'adresse aux organismes dont la mission est de montrer les métiers de l'industrie, de sensibiliser à ce qu'est l'industrie aujourd'hui et de valoriser l'industrie du territoire AURA.</p>
+</div>
+<div class="grid grid--3 mb-8">
+<div class="card reveal" style="--card-color: var(--color-accent)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-accent)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+<h3 class="card__title">Prescripteurs &amp; Partenaires</h3>
+<p class="card__text">Missions locales, forums emploi, salons de l'orientation, portes ouvertes. Vous animez des rencontres avec les familles ? Le jeu s'intègre directement dans vos événements.</p>
+</div>
+<span class="card__serial">FI-A01</span>
+</div>
+<div class="card reveal reveal--delay-1" style="--card-color: var(--color-primary)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-primary)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10H2v6z"/></svg>
+</div>
+<h3 class="card__title">Entreprises PMI</h3>
+<p class="card__text">Vos métiers peuvent rejoindre une sélection existante ou faire l'objet d'une déclinaison personnalisée, avec vos collaborateurs et vos entreprises du territoire.</p>
+</div>
+<span class="card__serial">FI-A02</span>
+</div>
+<div class="card reveal reveal--delay-2" style="--card-color: var(--color-sky)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-sky)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+</div>
+<h3 class="card__title">Acteurs de l'orientation</h3>
+<p class="card__text">Conseillers d'orientation, enseignants, accompagnateurs jeunesse. Un outil pédagogique clé en main pour ouvrir le dialogue sur les métiers industriels avec les familles.</p>
+</div>
+<span class="card__serial">FI-A03</span>
+</div>
+</div>
+</div>
+</section>
+<section id="solution" class="game-comp section" aria-labelledby="game-title">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-header__overline">Le jeu — Portrait d'avenir</span>
+<h2 id="game-title" class="section-header__title">5 familles de cartes pour construire un portrait de métier</h2>
+<p class="section-header__subtitle">Chaque groupe de joueurs part d'un profil de personne, choisit une mission qui colle, et découvre le métier-héros associé.</p>
+</div>
+<div class="grid grid--5 mb-8">
+<div class="card card--type reveal" style="--card-color: var(--color-card-profil)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-card-profil)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+<h3 class="card__title">① Carte Profil</h3>
+<p class="card__text">Mini-portrait : ce qu'il/elle aime, ses soft skills, son style de travail. Point de départ humain.</p>
+</div>
+<span class="card__serial">FI-P</span>
+</div>
+<div class="card card--type reveal reveal--delay-1" style="--card-color: var(--color-card-mission)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-card-mission)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+</div>
+<h3 class="card__title">② Carte Mission</h3>
+<p class="card__text">Le quotidien de travail en 2-3 phrases concrètes. Pivot du matching profil → métier.</p>
+</div>
+<span class="card__serial">FI-MI</span>
+</div>
+<div class="card card--type reveal reveal--delay-2" style="--card-color: var(--color-card-metier)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-card-metier)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+</div>
+<h3 class="card__title">③ Carte Métier-Héros</h3>
+<p class="card__text">Le nom du poste + visuel fort. Totem mémorable à ramener à la maison.</p>
+</div>
+<span class="card__serial">FI-M</span>
+</div>
+<div class="card card--type reveal reveal--delay-3" style="--card-color: var(--color-card-impact)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-card-impact)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10H2v6z"/></svg>
+</div>
+<h3 class="card__title">④ Carte Entreprise</h3>
+<p class="card__text">Nom, secteur, engagements. Une industrie vivante ancrée dans le territoire.</p>
+</div>
+<span class="card__serial">FI-E</span>
+</div>
+<div class="card card--type reveal reveal--delay-4" style="--card-color: var(--color-card-formation)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-card-formation)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+</div>
+<h3 class="card__title">⑤ Carte Formation</h3>
+<p class="card__text">1 à 3 chemins d'accès (CAP, Bac pro, BTS…) en langage simple et rassurant.</p>
+</div>
+<span class="card__serial">FI-F</span>
+</div>
+</div>
+<div class="game-comp__examples">
+<div class="game-comp__example reveal" style="--_example-color: var(--color-primary)">
+<h3 class="game-comp__example-title">Exemple — Monteuse de tiny house</h3>
+<p class="game-comp__example-quote">"Au quotidien, tu assembles les murs, poses l'isolation, installes les fenêtres pour des tiny houses prêtes à être livrées."</p>
+<p class="game-comp__example-detail">
+<strong>Profil :</strong> Lina — aime le travail manuel, voir vite le résultat, faire quelque chose d'utile.<br>
+<strong>Entreprise :</strong> Hekipia — tiny houses en bois, matériaux durables.
+</p>
+</div>
+<div class="game-comp__example reveal reveal--delay-1" style="--_example-color: var(--color-accent)">
+<h3 class="game-comp__example-title">Exemple — Opérateur machine CN</h3>
+<p class="game-comp__example-quote">"Au quotidien, tu prépares et lances des programmes sur des machines d'usinage. Tu contrôles les pièces au millimètre."</p>
+<p class="game-comp__example-detail">
+<strong>Profil :</strong> Yanis — aime la précision, ne supporte pas le "à peu près", à l'aise avec les machines.<br>
+<strong>Entreprise :</strong> Eriks — pièces mécaniques, précision et fiabilité.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="progression" class="progression section" aria-labelledby="progression-title">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-header__overline">Mécanique de jeu</span>
+<h2 id="progression-title" class="section-header__title">20 minutes, 5 étapes, 1 résultat concret</h2>
+<p class="section-header__subtitle">Chaque participant compose un portrait de métier et repart avec quelque chose de tangible à ramener chez soi.</p>
+</div>
+<div class="grid grid--5 stepper">
+<div class="stepper__track"></div>
+<div class="stepper__item reveal">
+<div class="stepper__number" style="background: var(--color-accent)"><span>1</span></div>
+<h3 class="stepper__title">Choisir un Profil</h3>
+<p class="stepper__text">« Imaginez que ce profil ressemble à un jeune que vous connaissez. »</p>
+</div>
+<div class="stepper__item reveal reveal--delay-1">
+<div class="stepper__number" style="background: var(--color-primary)"><span>2</span></div>
+<h3 class="stepper__title">Matcher une Mission</h3>
+<p class="stepper__text">Lire 2-3 missions et choisir celle qui colle le mieux au profil.</p>
+</div>
+<div class="stepper__item reveal reveal--delay-2">
+<div class="stepper__number" style="background: var(--color-sky)"><span>3</span></div>
+<h3 class="stepper__title">Révéler le Métier-Héros</h3>
+<p class="stepper__text">Retrouver la carte métier grâce au code symbole + couleur.</p>
+</div>
+<div class="stepper__item reveal reveal--delay-3">
+<div class="stepper__number" style="background: var(--color-lime)"><span>4</span></div>
+<h3 class="stepper__title">Compléter le portrait</h3>
+<p class="stepper__text">Ajouter Entreprise + Formation pour ancrer le métier dans le réel.</p>
+</div>
+<div class="stepper__item reveal reveal--delay-4">
+<div class="stepper__number" style="background: var(--color-teal)"><span>5</span></div>
+<h3 class="stepper__title">Ramener à la maison</h3>
+<p class="stepper__text">Construire un mini-récit : 1 métier + 1 phrase pour en parler autour de soi.</p>
+</div>
+</div>
+<div class="game-output reveal">
+<div class="game-output__inner">
+<h3 class="game-output__title">Ce qu'on obtient en sortie d'une partie</h3>
+<div class="game-output__grid">
+<div class="game-output__item">
+<span class="game-output__icon">🎴</span>
+<p><strong>1 portrait de métier complet</strong> — profil, mission, métier, entreprise, formation : une chaîne de cartes assemblée par le participant.</p>
+</div>
+<div class="game-output__item">
+<span class="game-output__icon">💬</span>
+<p><strong>1 phrase à ramener à la maison</strong> — « Ce soir, je te parlerai du métier de [X]. C'est un travail où on [Y], dans une entreprise qui [Z]. »</p>
+</div>
+<div class="game-output__item">
+<span class="game-output__icon">🔗</span>
+<p><strong>1 lien concret avec le territoire</strong> — une entreprise réelle, locale, qui recrute. Pas une fiche abstraite.</p>
+</div>
+<div class="game-output__item">
+<span class="game-output__icon">🧠</span>
+<p><strong>1 déclic sur l'industrie</strong> — les clichés tombent, les participants découvrent une industrie moderne, humaine et technologique.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="deploiement" class="deploiement section" aria-labelledby="deploiement-title">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-header__overline">Déploiement</span>
+<h2 id="deploiement-title" class="section-header__title">Facile à animer, facile à déployer</h2>
+<p class="section-header__subtitle">Comme une Fresque, le jeu est conçu pour être transmis simplement. Formation rapide, kit animateur fourni, et c'est parti.</p>
+</div>
+<div class="grid grid--3 mb-8">
+<div class="card reveal" style="--card-color: var(--color-primary)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-primary)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+</div>
+<h3 class="card__title">Formation rapide</h3>
+<p class="card__text">Pas besoin d'être expert de l'industrie. Une prise en main courte suffit pour animer votre première session en toute confiance.</p>
+</div>
+<span class="card__serial">FI-D01</span>
+</div>
+<div class="card reveal reveal--delay-1" style="--card-color: var(--color-accent)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-accent)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+</div>
+<h3 class="card__title">Kit animateur fourni</h3>
+<p class="card__text">Cartes imprimables, guide d'animation, script oral, fiches « phrase à ramener à la maison ». Tout est prêt, vous n'avez plus qu'à jouer.</p>
+</div>
+<span class="card__serial">FI-D02</span>
+</div>
+<div class="card reveal reveal--delay-2" style="--card-color: var(--color-sky)">
+<div class="card__body">
+<div class="card__icon" style="background: var(--color-sky)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+<h3 class="card__title">Créateur de lien</h3>
+<p class="card__text">Le format favorise les rencontres, les échanges et les interactions. 8–12 joueurs autour d'un même jeu, ça crée du lien naturellement.</p>
+</div>
+<span class="card__serial">FI-D03</span>
+</div>
+</div>
+</div>
+</section>
+<section class="formats section" aria-labelledby="formats-title">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-header__overline">Formats</span>
+<h2 id="formats-title" class="section-header__title">Adaptable à vos contraintes</h2>
+<p class="section-header__subtitle">8–12 joueurs + 1 animateur·rice. Insérable dans un parcours plus large.</p>
+</div>
+<div class="grid grid--3">
+<div class="format-card reveal">
+<span class="format-card__time">20 min</span>
+<h3 class="format-card__title">Session Standard</h3>
+<p class="format-card__desc">3' d'explication, 12-14' de jeu, 3-5' de debrief. Chaque participant repart avec 1 métier + 1 phrase.</p>
+</div>
+<div class="format-card reveal reveal--delay-1">
+<span class="format-card__time">10 min</span>
+<h3 class="format-card__title">Mode Light</h3>
+<p class="format-card__desc">PROFIL + MISSION + MÉTIER uniquement. Entreprise &amp; Formation portées à l'oral par l'animateur.</p>
+</div>
+<div class="format-card reveal reveal--delay-2">
+<span class="format-card__time">½ journée</span>
+<h3 class="format-card__title">Immersion</h3>
+<p class="format-card__desc">Session jeu + visite d'entreprise + debrief approfondi. Idéal pour les portes ouvertes.</p>
+</div>
+</div>
+<p class="formats__link">
+<a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="link text-small">
+Je ne sais pas quel format choisir → Réserver une démo 15 min
+</a>
+</p>
+</div>
+</section>
+<section id="packs" class="packs section" aria-labelledby="packs-title">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-header__overline">Accès</span>
+<h2 id="packs-title" class="section-header__title">Trois façons d'utiliser le jeu</h2>
+<p class="section-header__subtitle">Du kit démo autonome au jeu entièrement personnalisé, choisissez le niveau d'accompagnement qui correspond à votre projet.</p>
+</div>
+<div class="grid grid--3">
+<div class="card card--pack reveal" style="--card-color: var(--color-accent)">
+<div class="card__body">
+<p class="card--pack-overline uppercase text-muted">Kit autonome</p>
+<h3 class="card__pack-title" style="font-size:1.375rem;font-weight:700;margin-bottom:var(--space-2)">Le jeu démo à imprimer</h3>
+<p class="ticket__price" style="color:var(--color-accent)">35 €</p>
+<div class="card__pack-desc" style="font-size:var(--text-small);color:var(--color-muted);line-height:var(--leading-normal);flex:1">
+<p>Pour découvrir la mécanique et faire jouer vos publics en autonomie.</p>
+<ul class="card__pack-list">
+<li>PDF du jeu démo généraliste prêt à imprimer</li>
+<li>Kit animateur autonome</li>
+<li>Aucun accompagnement ni personnalisation inclus</li>
+</ul>
+<p><strong style="color:var(--color-text)">Idéal pour :</strong> tester le format simplement avant d'aller plus loin.</p>
+</div>
+</div>
+<div class="card__footer">
+<a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="width:100%;justify-content:center">Demander le kit démo</a>
+</div>
+<span class="card__serial">FI-PK01</span>
+</div>
+<div class="card card--pack reveal reveal--delay-1" style="--card-color: var(--color-lime)">
+<div class="card__body">
+<p class="card--pack-overline uppercase text-muted">Déploiement accompagné</p>
+<h3 class="card__pack-title" style="font-size:1.375rem;font-weight:700;margin-bottom:var(--space-2)">Une sélection déjà disponible</h3>
+<p class="ticket__price" style="color:var(--color-primary)">À partir de 350 €</p>
+<div class="card__pack-desc" style="font-size:var(--text-small);color:var(--color-muted);line-height:var(--leading-normal);flex:1">
+<p>Vous choisissez 12 métiers déjà documentés dans la base de données.</p>
+<ul class="card__pack-list">
+<li>Formation de 40 minutes en visioconférence</li>
+<li>PDF remis pour impression + kit animateur</li>
+<li>Accompagnement sur un premier temps d'atelier</li>
+</ul>
+<p><strong style="color:var(--color-text)">Pas de création de nouvelles cartes ni de maintenance incluses dans cette formule.</strong></p>
+</div>
+</div>
+<div class="card__footer">
+<a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn" style="width:100%;justify-content:center;background:var(--color-lime);color:var(--color-dark)">Choisir une sélection</a>
+</div>
+<span class="card__serial">FI-PK02</span>
+</div>
+<div class="card card--pack card--featured reveal reveal--delay-2" style="--card-color: var(--color-primary)">
+<span class="card__badge-top">Version la plus complète</span>
+<div class="card__body">
+<p class="card--pack-overline uppercase text-muted">Jeu entièrement personnalisé</p>
+<h3 class="card__pack-title" style="font-size:1.375rem;font-weight:700;margin-bottom:var(--space-2)">Votre jeu 12 métiers × 12 entités</h3>
+<p class="ticket__price" style="color:var(--color-primary)">Jusqu'à 3 500 €</p>
+<div style="font-size:var(--text-small);color:var(--color-muted);line-height:var(--leading-normal);flex:1">
+<p style="margin-bottom:var(--space-2);font-weight:700;color:var(--color-primary)">Nous partons de zéro et construisons votre déclinaison avec votre réseau.</p>
+<ul class="card__pack-list">
+<li>Cadrage des 12 métiers et 12 entités, mises en relation et entretiens</li>
+<li>Intégration dans la base et déclinaison en cartes validées</li>
+<li>Formation, accompagnement sur un premier événement et maintenance pendant 1 an</li>
+<li>Maintenance : mises à jour, remplacement des cartes obsolètes et jusqu'à 5 métiers ajoutés</li>
+</ul>
+<p><strong style="color:var(--color-text)">Des métiers supplémentaires peuvent être créés à l'unité, sur demande.</strong></p>
+</div>
+</div>
+<div class="card__footer">
+<a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn" style="width:100%;justify-content:center;background:var(--color-primary);color:white">Construire votre jeu</a>
+</div>
+<span class="card__serial">FI-PK03</span>
+</div>
+</div>
+<div class="packs__focus reveal">
+<div>
+<h3 class="packs__focus-title">Vous préférez tester avant de commander ?</h3>
+<p class="packs__focus-text" style="margin-bottom:var(--space-2)">
+Le jeu démo peut aussi être <strong>emprunté sur demande</strong> pour une première animation. Vous vérifiez le format avec vos publics avant de choisir le kit autonome, le déploiement accompagné ou votre propre version.
+</p>
+<p class="packs__focus-text text-small">L'impression physique, les déplacements et les animations supplémentaires font l'objet d'un échange spécifique.</p>
+</div>
+<div class="packs__focus-cta">
+<a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn" style="background:#4338CA;color:white">Demander un prêt</a>
+</div>
+</div>
+</div>
+</section>
+<section class="synergie section" aria-labelledby="synergie-title">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-header__overline">Synergie</span>
+<h2 id="synergie-title" class="section-header__title">Un outil qui s'intègre dans vos actions existantes</h2>
+<p class="section-header__subtitle">Le jeu est utile seul, mais il décuple son impact en synergie avec vos autres dispositifs de sensibilisation et d'orientation.</p>
+</div>
+<div class="synergie__grid reveal">
+<div class="synergie__item">
+<span class="synergie__icon">🏭</span>
+<h3>Visites d'entreprises</h3>
+<p>Avant ou après une visite, le jeu ancre les découvertes et donne un vocabulaire commun.</p>
+</div>
+<div class="synergie__item">
+<span class="synergie__icon">🧭</span>
+<h3>RDV d'orientation</h3>
+<p>Support ludique pour les entretiens individuels ou collectifs avec les familles.</p>
+</div>
+<div class="synergie__item">
+<span class="synergie__icon">🎪</span>
+<h3>Forums &amp; salons de l'emploi</h3>
+<p>Animation de stand qui crée du flux et de l'engagement, au lieu du simple tract.</p>
+</div>
+<div class="synergie__item">
+<span class="synergie__icon">🚪</span>
+<h3>Portes ouvertes</h3>
+<p>Format court idéal pour les journées multi-activités où le temps est limité.</p>
+</div>
+<div class="synergie__item">
+<span class="synergie__icon">🎓</span>
+<h3>Ateliers scolaires</h3>
+<p>Utilisable en classe pour découvrir l'industrie locale de manière interactive.</p>
+</div>
+<div class="synergie__item">
+<span class="synergie__icon">🤝</span>
+<h3>Événements territoire</h3>
+<p>Semaine de l'industrie, journées orientation, événements partenaires AURA.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="customization section" aria-labelledby="custom-title">
+<div class="container text-center">
+<div class="section-header reveal">
+<h2 id="custom-title" class="section-header__title text-white">Un jeu personnalisable, construit sur une base de données vivante</h2>
+<p class="section-header__subtitle" style="color:rgba(255,255,255,0.95)">Le catalogue est construit grâce à une base de données complète et mise à jour par la CPME Rhône et Loire. Une version personnalisée peut partir de métiers existants ou intégrer de nouvelles cartes, avec maintenance incluse pendant un an.</p>
+</div>
+<div class="customization__grid">
+<div class="reveal">
+<h3 class="customization__col-title" style="color: var(--color-lime)">Ce qui peut être personnalisé</h3>
+<ul class="customization__list">
+<li>• <strong>Entreprises PMI :</strong> Intégrez vos entreprises et celles de vos réseaux dans le jeu.</li>
+<li>• <strong>Métiers :</strong> Sélection adaptée à votre territoire, vos filières, vos besoins en recrutement.</li>
+<li>• <strong>Parcours :</strong> Personnalisez les chemins de formation et les profils selon vos publics.</li>
+<li>• <strong>Missions :</strong> Rédigées à partir du quotidien réel de vos collaborateurs.</li>
+</ul>
+</div>
+<div class="reveal reveal--delay-1">
+<h3 class="customization__col-title" style="color: var(--color-sky)">La base de données</h3>
+<ul class="customization__list">
+<li>• <strong>+45 PMI engagées</strong> et <strong>+110 métiers</strong> documentés et validés.</li>
+<li>• <strong>+530 organisations</strong> cartographiées et mises à jour en continu.</li>
+<li>• <strong>Extensible :</strong> nous pouvons ensemble ajouter les entreprises et métiers de votre choix.</li>
+<li>• <strong>Qualité :</strong> chaque fiche est validée avec l'entreprise et le chargé de projet.</li>
+</ul>
+</div>
+</div>
+<div class="customization__cta-wrap reveal">
+<span class="customization__cta-ring">
+<a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--lg">
+Personnaliser le jeu pour votre contexte (15 min)
+<svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</a>
+</span>
+<p class="customization__cta-hint">On part de vos objectifs, on propose une adaptation simple.</p>
+</div>
+</div>
+</section>
+<section class="testimonials section" aria-labelledby="testimonials-title">
+<div class="container">
+<div class="section-header reveal">
+<h2 id="testimonials-title" class="section-header__title">Ils ont vu des déclics.<br>Et ils en parlent mieux que nous.</h2>
+</div>
+<div class="grid grid--3">
+<div class="card card--testimonial reveal" style="--card-color: var(--color-accent)">
+<div class="card__body">
+<div class="card__stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="card__quote">"Avant, les parents pensaient que l'usine c'est Charlie Chaplin. Après 20 minutes avec les cartes, ils repartent avec un métier précis et une phrase pour en parler autour d'eux."</p>
+<p class="card__author">Animatrice Forum Emploi</p>
+<p class="card__role">Utilisatrice Pack Partenaire</p>
+</div>
+<span class="card__serial">FI-T01</span>
+</div>
+<div class="card card--testimonial reveal reveal--delay-1" style="--card-color: var(--color-primary)">
+<div class="card__body">
+<div class="card__stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="card__quote">"Ce que j'ai préféré, c'est voir des personnes en reconversion découvrir que nos métiers sont hyper technologiques. En 20 minutes, elles avaient compris ce qu'on fait et pouvaient envisager une voie professionnelle concrète."</p>
+<p class="card__author">DRH Industrie Mécanique</p>
+<p class="card__role">Utilisatrice Pack Entreprise</p>
+</div>
+<span class="card__serial">FI-T02</span>
+</div>
+<div class="card card--testimonial reveal reveal--delay-2" style="--card-color: var(--color-teal)">
+<div class="card__body">
+<div class="card__stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="card__quote">"Le matching profil-mission fonctionne très bien. Les participants se prennent au jeu, ils cherchent la bonne carte métier avec les codes couleur. C'est simple et ça crée du lien."</p>
+<p class="card__author">Chargée de mission Emploi</p>
+<p class="card__role">Partenaire Territoire</p>
+</div>
+<span class="card__serial">FI-T03</span>
+</div>
+</div>
+</div>
+</section>
+<section class="mini-kit section" aria-labelledby="minikit-title">
+<div class="container container--narrow">
+<div class="cta-band reveal">
+<span class="cta-band__badge">35 € · Kit autonome</span>
+<h2 id="minikit-title" class="cta-band__title">Le jeu démo pour commencer simplement</h2>
+<p class="cta-band__text">Le PDF du jeu démo généraliste prêt à imprimer, accompagné du kit animateur autonome. Rien de plus : vous pouvez découvrir la mécanique et faire jouer vos publics à votre rythme.</p>
+<div class="cta-band__form" style="justify-content:center">
+<a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn" style="background:#4338CA;color:white">
+Obtenir le kit démo
+</a>
+</div>
+</div>
+</div>
+</section>
+<section id="faq" class="faq section" aria-labelledby="faq-title">
+<div class="container container--narrow">
+<div class="section-header reveal">
+<h2 id="faq-title" class="section-header__title">Questions Fréquentes</h2>
+</div>
+<div class="accordion" role="list">
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>À qui s'adresse Faire l'Industrie ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+Aux parents et adultes prescripteurs (famille, référents, accompagnateurs) lors de forums emploi, salons, portes ouvertes. Aussi aux partenaires qui animent ces événements et aux entreprises (PMI) qui veulent valoriser leurs métiers.
+</div>
+</div>
+</div>
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>Combien de temps faut-il pour animer ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+Une session standard dure 20 minutes : 3 min d'explication des règles, 12-14 min de jeu, 3-5 min de debrief. Le Mode Light est encore plus court (10 min). Possible en 1/2 journée avec visite d'entreprise.
+</div>
+</div>
+</div>
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>Est-ce adapté à un public hétérogène ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+Oui, le jeu est pensé pour un public peu familier de l'industrie. Les cartes sont visuelles, lisibles en moins de 20 secondes, et l'animateur reformule en langage courant.
+</div>
+</div>
+</div>
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>En quoi est-ce différent d'une visite classique ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+C'est actif. Les participants ne font pas que regarder : ils choisissent un profil, matchent une mission, découvrent un métier-héros et construisent un récit à ramener à la maison.
+</div>
+</div>
+</div>
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>Comment obtenir le jeu / le kit ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+Téléchargez le kit de présentation via le bouton ci-dessous, tout y est expliqué. Le kit contient le guide animateur, le script oral et les cartes.
+</div>
+</div>
+</div>
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>Faut-il être expert de l'industrie pour animer ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+Non. Le jeu est conçu pour être facile à animer avec une formation rapide. Le kit animateur fourni comprend tout le nécessaire : script oral, règles visuelles, et fiches de débrief.
+</div>
+</div>
+</div>
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>D'où viennent les données des cartes ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+Le jeu est construit grâce à une base de données complète (+45 PMI engagées, +110 métiers documentés, +530 organisations cartographiées) mise à jour en continu par la CPME Rhône et Loire. Vous pouvez également ajouter ensemble les entreprises et métiers de vos réseaux.
+</div>
+</div>
+</div>
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>Est-ce que c'est payant ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+Oui. Le kit démo autonome est proposé à <strong>35 €</strong>. Une sélection de 12 métiers déjà présents dans la base est disponible <strong>à partir de 350 €</strong>, avec formation, remise du PDF et accompagnement sur un premier atelier. Une version entièrement personnalisée va <strong>jusqu'à 3 500 €</strong>.
+</div>
+</div>
+</div>
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>Que comprend la maintenance d'une version personnalisée ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+Au-dessus de 350 €, la maintenance est incluse pendant un an : mise à jour des cartes, remplacement des informations devenues obsolètes et création de nouvelles cartes pour compléter le kit, jusqu'à 5 métiers. D'autres métiers peuvent ensuite être créés à l'unité, sur demande.
+</div>
+</div>
+</div>
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>Peut-on utiliser le jeu en complément d'autres actions ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+Absolument. Le jeu est un outil en synergie avec vos autres actions : visites d'entreprises, RDV d'orientation, forums, salons de l'emploi, portes ouvertes. Il s'insère facilement dans un parcours plus large.
+</div>
+</div>
+</div>
+<div class="accordion__item" role="listitem">
+<button class="accordion__trigger" aria-expanded="false">
+<span>Peut-on adapter le jeu à nos métiers ?</span>
+<svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="accordion__panel" aria-hidden="true">
+<div class="accordion__content">
+Absolument. Le jeu fonctionne comme une <strong>bibliothèque extensible de chaînes de cartes métiers</strong>. La formule personnalisée permet de partir de vos métiers réels et de vos entités partenaires, puis de les transformer en cartes validées et animables.
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="metiers" class="catalogue section" aria-labelledby="metiers-title">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-header__overline">Métiers</span>
+<h2 id="metiers-title" class="section-header__title">Les Métiers de la Région</h2>
+<p class="section-header__subtitle">Un extrait des métiers du catalogue complet qui compte à date <strong>+45 PMI engagées</strong>, <strong>+110 métiers documentés</strong> et <strong>+530 organisations cartographiées</strong>. Base de données mise à jour en continu par la CPME Rhône et Loire.</p>
+</div>
+<div class="grid grid--3" id="jobs-grid">
+</div>
+</div>
+</section>
+<section id="mission" class="impact section" aria-labelledby="impact-title">
+<div class="container">
+<div class="section-header reveal">
+<h2 id="impact-title" class="section-header__title text-white">La mission du projet</h2>
+<p class="section-header__subtitle" style="color: var(--color-sky)">Pour quoi nous agissons ensemble</p>
+</div>
+<div class="grid grid--4 stepper">
+<div class="stepper__track"></div>
+<div class="stepper__item reveal">
+<div class="stepper__number"><span>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</span></div>
+<h3 class="stepper__title">1. Intégration</h3>
+<p class="stepper__text">Intégration en 45min chrono des métiers de vos PMI : les cartes sont créées avec le chargé du projet CPME.</p>
+</div>
+<div class="stepper__item reveal reveal--delay-1">
+<div class="stepper__number"><span>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</span></div>
+<h3 class="stepper__title">2. Diffusion</h3>
+<p class="stepper__text">Animations par nos partenaires là où sont les parents : forums emploi, salons, portes ouvertes, événements territoire.</p>
+</div>
+<div class="stepper__item reveal reveal--delay-2">
+<div class="stepper__number"><span>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</span></div>
+<h3 class="stepper__title">3. Inspiration</h3>
+<p class="stepper__text">Les parents jouent, découvrent les métiers et repartent avec 1 métier + 1 phrase pour ouvrir le dialogue à la maison.</p>
+</div>
+<div class="stepper__item reveal reveal--delay-3">
+<div class="stepper__number"><span>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+</span></div>
+<h3 class="stepper__title">4. Transformation</h3>
+<p class="stepper__text">Les clichés tombent, l'image de l'industrie change et les jeunes découvrent des métiers qu'ils n'auraient jamais imaginés.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer" role="contentinfo">
+<div class="container text-center">
+<div class="footer__brand">
+<img src="assets/fi-logo.webp" alt="Logo Faire l'Industrie" width="400" height="400" loading="lazy">
+</div>
+<div class="footer__ctas">
+<a href="https://liutnotes.notion.site/7604c2d017634177879ed982bfdc693f" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
+<svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+Recevoir le kit (PDF)
+</a>
+<a href="https://cal.com/fabrice-liut/15-min-meeting" target="_blank" rel="noopener noreferrer" class="btn btn--lg" style="background:white;color:var(--color-text)">
+<svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+Réserver une démo
+</a>
+</div>
+<p class="footer__partners-label">Les porteurs du dispositif</p>
+<div class="footer__partners">
+<picture>
+<source srcset="assets/logo 42.webp" type="image/webp">
+<img src="assets/logo 42.jpg" alt="Logo CPME 42" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
+</picture>
+<picture>
+<source srcset="assets/logo 69.webp" type="image/webp">
+<img src="assets/logo 69.jpg" alt="Logo CPME 69" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
+</picture>
+<picture>
+<source srcset="assets/logo Ilyse.webp" type="image/webp">
+<img src="assets/logo Ilyse.jpg" alt="Logo Fondation Ilyse" class="footer__partner-logo" width="150" height="150" loading="lazy" decoding="async">
+</picture>
+</div>
+<div class="footer__bottom">
+<span>&copy; <span id="year"></span> Faire l'Industrie. Tous droits réservés. CPME du Rhône, Lyon.</span>
+</div>
+</div>
+</footer>
+<script src="scripts/main.min.js" defer></script>
+<script>
+// Lazy-load Geist Mono font (only used for small labels)
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+var gm = document.createElement('link');
+gm.rel = 'preload';
+gm.as = 'font';
+gm.type = 'font/woff2';
+gm.crossOrigin = 'anonymous';
+gm.href = 'assets/fonts/GeistMono-variable.woff2';
+document.head.appendChild(gm);
+}
+</script>
 </body>
 </html>
